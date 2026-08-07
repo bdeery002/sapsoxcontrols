@@ -28,7 +28,13 @@ load_dotenv()
 SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'sapsoxcontrols.com',
+    'www.sapsoxcontrols.com',
+    'sapsoxcontrols-production.up.railway.app',
+    'localhost',
+    '127.0.0.1',
+]
 
 # Application definition
 
@@ -132,9 +138,18 @@ STATICFILES_DIRS = [
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 CSRF_TRUSTED_ORIGINS = [
+    "https://sapsoxcontrols.com",
+    "https://www.sapsoxcontrols.com",
+    "https://sapsoxcontrols-production.up.railway.app",
     "https://*.app.github.dev",
     "https://localhost:8081",
 ]
 
 # Django Admin Customization
 ADMIN_URL = '/admin/'
+
+# Production Security
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
