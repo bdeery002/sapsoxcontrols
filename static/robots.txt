@@ -1,0 +1,53 @@
+# Block AI training crawlers
+User-Agent: GPTBot
+Disallow: /
+
+User-Agent: CCBot
+Disallow: /
+
+User-Agent: anthropic-ai
+Disallow: /
+
+User-Agent: Claude-Web
+Disallow: /
+
+User-Agent: OAI-SearchBot
+Disallow: /
+
+User-Agent: Perplexity-AI
+Disallow: /
+
+User-Agent: Cohere
+Disallow: /
+
+User-Agent: MicrosoftBot
+Disallow: /
+
+User-Agent: Meta-Externalagent
+Disallow: /
+
+User-Agent: AmazonBot
+Disallow: /
+
+User-Agent: AppleBot
+Disallow: /
+
+User-Agent: DuckAssistant
+Disallow: /
+
+User-Agent: Bytespider
+Disallow: /
+
+# Allow major search engines
+User-Agent: Googlebot
+Allow: /
+
+User-Agent: Bingbot
+Allow: /
+
+User-Agent: Slurp
+Allow: /
+
+# Default: allow all others
+User-Agent: *
+Allow: /

@@ -1,0 +1,16 @@
+# =============================================================================
+# ENVIRONMENT VARIABLES — copy this file to .env and fill in the values
+# =============================================================================
+
+# Django secret key
+# Generate one by running:
+# python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+SECRET_KEY=
+
+# Set to False in production
+DEBUG=True
+
+# Neon database connection string
+# Find this in the Neon console: console.neon.tech
+# Go to your project → Connect → Connection string
+DATABASE_URL=

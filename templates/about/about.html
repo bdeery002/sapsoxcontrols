@@ -1,0 +1,352 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About — SAP SOX Control Baselines{% endblock %}
+
+{% block content %}
+<div class="about-page">
+    <!-- Page Header -->
+    <h1>About - SAP SOX Control Baselines</h1>
+    <p>Baseline SAP-centric business process and IT control frameworks for building SOX programs.</p>
+
+    <!-- About the Author -->
+    <section class="author-section">
+        <h2>About the Author</h2>
+        <div class="author-grid">
+            <div class="author-bio">
+    <h3>Brendan Deery</h3>
+    <a href="https://www.linkedin.com/in/brendan-deery-b14a8128/" target="_blank" class="author-link">
+        LinkedIn Profile
+    </a>
+               
+
+                <p><strong>Senior Manager, IT Internal Audit</strong></p>
+                <p>
+                    Internal Audit and SOX leader with 16+ years of Big 4 and industry experience in enterprise environments centered on SAP and Workday. CA/CPA, CISA, CISSP, and AAISM with a track record of building SOX programs, designing ITGCs and automated controls, and advising management on ERP security, change management, and financial reporting risk across integrated system landscapes.
+                    Experience includes Big 4 client work, SAP S/4HANA and ECC implementations, Workday Financials and HCM deployments, and in-house audit leadership at publicly listed companies typically in environments where SAP S/4HANA sits at the core and connects to a broader set of applications.
+                 </p>   
+
+                <p>
+                    These baselines reflect lessons learned from dozens of SAP-centric control design and testing engagements, acquisitions, and system implementations. They're purpose-built for organizations running SAP S/4HANA, helping you design and test SOX controls that fit your specific environment and risk profile.
+
+                
+            </div>
+
+          
+            <div class="author-credentials">
+                <div class="cred-box">
+                    <h4>Certifications</h4>
+                    <ul>
+                        <li>CA/CPA - Chartered Accountant</li>
+                        <li>CISA - Certified Information Systems Auditor</li>
+                        <li>CISSP - Certified Information Systems Security Professional</li>
+                        <li>AAISM - Advanced in AI Security Management</li>
+                        <li>CIA - Certified Internal Auditor</li>
+                    </ul>
+                </div>
+
+                <div class="cred-box">
+                    <h4>Key Experience</h4>
+                    <ul>
+                        <li>SAP S/4HANA & ECC expertise</li>
+                        <li>SOX program design & execution</li>
+                        <li>ITGC & ITAC testing</li>
+                        <li>Control design & remediation</li>
+                        <li>Cybersecurity & technology risk reviews</li>
+                        <li>Data analytics supporting audit (Alteryx, SQL, Python)</li>
+                        <li>Big 4 & industry audit leadership</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Explore Resources -->
+    <section class="cta-section">
+        <h2>Explore SOX Control Baselines</h2>
+        <div class="cta-links">
+            <a href="{% url 'sox_controls:index' %}" class="cta-link"> SAP Business Process Controls</a>
+            <a href="{% url 'itgc:index' %}" class="cta-link">SAP IT General Controls (ITGC)</a>
+        </div>
+    </section>
+
+    <!-- Mission Statement -->
+    <section class="mission-section">
+        <h2>SOX Control Baselines for SAP Environments</h2>
+        <p>
+            This site was built to share a practical baseline, a set of SAP-centric business process controls and IT General Controls
+            (ITGCs) around which organizations can build and mature their SOX programs.
+        </p>
+        <p>
+            The resources here cover key SAP business processes (Procure to Pay, Order to Cash, Record to Report, Acquire to Retire and Inventory) with mapped SOX controls,
+            as well as core ITGCs (access management, change control, computer operations) that apply
+            across SAP environments. Organizations can use these as a starting point, customize them to their risk profile and process design,
+            and build a more mature control environment from there.
+        </p>
+    </section>
+
+    <!-- What's Included -->
+    <section class="content-section">
+        <h2>What's Included</h2>
+        <div class="content-grid">
+            <div class="content-item">
+                <h3>SAP Business Process Controls</h3>
+                <p>
+                    Baseline control matrices for key SAP processes (Procure to Pay, Order to Cash, Record to Report,Acquire to Retire and Inventory). Each includes business
+                    risks, control objectives, and control designs mapped to SOX compliance requirements.
+                </p>
+            </div>
+            <div class="content-item">
+                <h3>IT General Controls (ITGCs)</h3>
+                <p>
+                    Core ITGC frameworks for SAP access management, change control,
+                    batch processing, and backup management.
+                </p>
+            </div>
+            <div class="content-item">
+                <h3>Control Mapping & Matrices</h3>
+                <p>
+                    Interactive workflow dashboards showing SAP business process flows and how controls map to SOX requirements. 
+                    Click on any process node to filter and explore related controls, test procedures, and audit evidence. 
+        Workflows visualize both primary processes and related controls in an intuitive, click-driven interface.
+                </p>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- How to Use -->
+    <section class="usage-section">
+        <h2>How to Use These Baselines</h2>
+        <p>
+            These frameworks are <strong>starting points, not final solutions</strong>. Use them to:
+        </p>
+        <ul class="usage-list">
+            <li><strong>Assess current state:</strong> Compare your existing controls against the baseline to identify gaps.</li>
+            <li><strong>Design controls:</strong> Adapt control designs to your business processes, system configurations, and risk profile.</li>
+            <li><strong>Plan testing:</strong> Use the control matrices to scope and execute SOX testing programs.</li>
+            <li><strong>Maintain controls:</strong> Build on these frameworks as your SAP environment evolves and your organization matures.</li>
+        </ul>
+    </section>
+
+   
+</div>
+
+<style>
+    /* About Page Styles - Minimal, Consistent with Site Design */
+    .about-page {
+        max-width: 900px;
+    }
+
+    .about-page h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #000;
+    }
+
+    .about-page > p {
+        color: #555;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .about-page h2 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #dee2e6;
+        padding-bottom: 0.5rem;
+    }
+
+    .about-page h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .about-page p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #555;
+        margin-bottom: 1rem;
+    }
+
+    /* Mission Section */
+    .mission-section {
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    /* Content Grid */
+    .content-section {
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 1.5rem;
+    }
+
+    .content-item {
+        padding: 1.5rem;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+    }
+
+    .content-item h3 {
+        color: #007bff;
+        margin-bottom: 0.75rem;
+    }
+
+    .content-item p {
+        margin-bottom: 0;
+        font-size: 0.9rem;
+    }
+
+    /* Usage Section */
+    .usage-section {
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .usage-list {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0;
+    }
+
+    .usage-list li {
+        padding: 0.75rem 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .usage-list strong {
+        color: #007bff;
+    }
+
+    /* Author Section */
+    .author-section {
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .author-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        margin-top: 1.5rem;
+    }
+
+    .author-bio h3 {
+        color: #007bff;
+        margin-bottom: 0.25rem;
+    }
+
+    .author-bio p {
+        margin-bottom: 1rem;
+    }
+
+    .author-bio p:first-of-type {
+        font-weight: 600;
+        color: #666;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Credentials Boxes */
+    .author-credentials {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .cred-box {
+        padding: 1.5rem;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+    }
+
+    .cred-box h4 {
+        color: #007bff;
+        font-size: 1rem;
+        margin: 0 0 0.75rem 0;
+    }
+
+    .cred-box ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .cred-box li {
+        padding: 0.4rem 0;
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        margin-bottom: 2rem;
+    }
+
+    .cta-links {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .cta-link {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #f8f9fa;
+        border: 1px solid #000;
+        text-decoration: none;
+        color: #007bff;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    .cta-link:hover {
+        background-color: #e9ecef;
+        text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .about-page h1 {
+            font-size: 1.6rem;
+        }
+
+        .content-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .author-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .cta-links {
+            flex-direction: column;
+        }
+
+        .cta-link {
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
+{% endblock %}

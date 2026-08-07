@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if entry %}Propose Edit: {{ entry.title }}{% else %}Propose New Entry{% endif %}
+{% endblock %}
+
+{% block nav_extra %}
+    {% include "blog/_sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+    <h1>{% if entry %}Propose an Edit: {{ entry.title }}{% else %}Propose a New Entry{% endif %}</h1>
+    
+    <p class="proposal-intro">
+        {% if entry %}
+            Suggest changes to this entry. Your proposal will be reviewed before going live.
+        {% else %}
+            Suggest a new entry. Your proposal will be reviewed before going live.
+        {% endif %}
+    </p>
+
+    <form action="" method="post" class="edit-form">
+        {% csrf_token %}
+
+        <div class="form-group form-group--title">
+            <label>Your Name</label>
+            <input type="text" name="name" placeholder="Optional">
+        </div>
+
+        <div class="form-group form-group--title">
+            <label>Your Email</label>
+            <input type="email" name="email" placeholder="Optional — only used to notify you of the outcome">
+        </div>
+
+        <div class="form-group form-group--title">
+            <label>Title</label>
+            <input type="text" 
+                   name="title" 
+                   value="{{ title|default:'' }}" 
+                   placeholder="Entry title"
+                   required>
+            {% if entry %}
+            <small class="form-text text-muted">
+                You can propose a different title if desired.
+            </small>
+            {% endif %}
+        </div>
+
+        <div class="form-group form-group--content">
+            <label>Markdown Content</label>
+            <textarea name="content" rows="15">{{ content|default:'' }}</textarea>
+        </div>
+
+        <div class="form-actions">
+            <input type="submit" value="Submit Proposal" class="btn-save">
+            {% if entry %}
+                <a href="{% url 'blog:entry' entry.title %}" class="btn-cancel">Cancel</a>
+            {% else %}
+                <a href="{% url 'blog:index' %}" class="btn-cancel">Cancel</a>
+            {% endif %}
+        </div>
+    </form>
+{% endblock %}

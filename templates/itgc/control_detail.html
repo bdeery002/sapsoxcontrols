@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="itgc-control-detail" style="max-width: 900px; margin: 0 auto;">
+    <a href="{% url 'itgc:index' %}" style="margin-bottom: 20px; display: inline-block;">
+        ← Back to Controls
+    </a>
+    
+    <h1>{{ control.control_id }}</h1>
+    
+    <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 30px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div>
+                <strong>Layer:</strong><br>
+                {{ control.itgc_category.itgc_layer.name }}
+            </div>
+            <div>
+                <strong>Category:</strong><br>
+                {{ control.itgc_category.name }}
+            </div>
+            <div>
+                <strong>Control Type:</strong><br>
+                {{ control.get_control_type_display }}
+            </div>
+            <div>
+                <strong>Execution Type:</strong><br>
+                {{ control.get_execution_type_display }}
+            </div>
+            <div>
+                <strong>Effective Date:</strong><br>
+                {{ control.effective_date }}
+            </div>
+        </div>
+    </div>
+    
+    <section style="margin-bottom: 30px;">
+        <h2>Control Description</h2>
+        <p>{{ control.control_description }}</p>
+    </section>
+    
+    <section style="margin-bottom: 30px;">
+        <h2>Risk</h2>
+        <p>{{ control.risk }}</p>
+    </section>
+    
+    {% if control.implementation_details %}
+    <section style="margin-bottom: 30px;">
+        <h2>Implementation Details</h2>
+        <p>{{ control.implementation_details|linebreaks }}</p>
+    </section>
+    {% endif %}
+    
+    {% if control.test_procedures %}
+    <section style="margin-bottom: 30px;">
+        <h2>Test Procedures</h2>
+        <p>{{ control.test_procedures|linebreaks }}</p>
+    </section>
+    {% endif %}
+    
+    {% if request.user.is_staff %}
+    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd;">
+        <a href="{% url 'admin:itgc_itgccontrol_change' control.pk %}" 
+           class="button" style="padding: 8px 15px; background: #417690; color: white; text-decoration: none; border-radius: 3px;">
+            Edit in Admin
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

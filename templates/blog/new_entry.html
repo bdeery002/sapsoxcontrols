@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Create New Page{% endblock %}
+
+{% block nav_extra %}
+    {% include "blog/_sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+    <h1>Create New Encyclopedia Page</h1>
+
+    <form action="{% url 'blog:new_entry' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" name="title" class="form-control" required placeholder="Enter title">
+        </div>
+        <div class="form-group">
+            <label for="content">Markdown Content:</label>
+            <textarea name="content" class="form-control" rows="10" required placeholder="Write your content in Markdown..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Page</button>
+    </form>
+{% endblock %}

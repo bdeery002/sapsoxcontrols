@@ -1,0 +1,307 @@
+/* ==========================================================================
+   1. GLOBAL RESETS & BASE STYLES
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ==========================================================================
+   2. LAYOUT SHELL (Flexbox Wrapper)
+   ========================================================================== */
+.container {
+    display: flex;
+    min-height: 100vh;
+    align-items: stretch;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px 15px; /* Reduced padding for more content space */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: #fff;
+}
+
+/* ==========================================================================
+   3. SIDEBAR NAVIGATION
+   ========================================================================== */
+
+.sidebar {
+    background-color: #f8f9fa;
+    width: 180px;      /* Reduced from 250px */
+    min-width: 180px;  /* Prevents flex/grid squishing */
+    padding: 1.5rem 1rem; /* Slimmer padding to maximize usable space */
+    border-right: 1px solid #dee2e6;
+}
+
+
+.sidebar h2 {
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+}
+.search {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+.nav-links a {
+    display: block;
+    padding: 8px 0;    /* Slightly tighter vertical spacing */
+    text-decoration: none;
+    color: #007bff;
+    font-size: 0.95rem; /* Optional: subtle size reduction for links */
+}
+
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   4. FORM ELEMENTS & EDITING INTERFACE
+   ========================================================================== */
+.edit-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Title: constrained width */
+.form-group--title input[type="text"] {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Content: full width, tall, monospace for markdown editing */
+.form-group--content textarea {
+    width: 100%;
+    min-height: 500px;
+    resize: vertical;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: block;
+}
+
+.form-actions {
+    margin-top: 10px;
+}
+
+.btn-save {
+    padding: 10px 24px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    background-color: #0056b3;
+}
+
+.author-link {
+    display: block;
+    color: #0077b5;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.author-link:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   5. PROPOSALS
+   ========================================================================== */
+.proposal-intro {
+    color: #555;
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+.proposal-confirmation {
+    max-width: 600px;
+    text-align: center;
+    margin: 80px auto;
+}
+
+.proposal-confirmation h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.proposal-confirmation p {
+    color: #555;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.btn-cancel {
+    display: inline-block;
+    margin-left: 15px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.btn-cancel:hover {
+    background-color: #545b62;
+}/* ==========================================================================
+   6. TABLES & GRID ALIGNMENT (Force Tabular Grid)
+   ========================================================================== */
+table.table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-top: 20px !important;
+    table-layout: fixed !important;
+    background-color: #fff !important;
+    border: 1px solid #000 !important;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE 10 and older */
+    user-select: none;         /* Standard syntax */
+}
+
+table.table th, 
+table.table td {
+    padding: 12px 15px !important;
+    /* Changed from right to left justify */
+    text-align: left !important; 
+    border: 1px solid #000 !important;
+    vertical-align: top !important;
+    word-wrap: break-word !important;
+}
+
+table.table th {
+    background-color: #f8f9fa !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    font-size: 0.85rem !important;
+    /* Ensure headers match the left justification */
+    text-align: left !important; 
+}
+
+/* Specific Column Widths */
+.col-id   { width: 8% !important; }
+.col-proc { width: 10% !important; }
+.col-sub  { 
+    width: 10% !important; 
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+.col-risk { width: 27% !important; }
+.col-desc { width: 45% !important; }
+
+tr:hover {
+    background-color: #f1f3f5 !important;
+}
+
+.filter-row th {
+    background-color: #fcfcfc !important;
+    padding: 5px !important;
+}
+
+.filter-row input {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.75rem;
+    font-weight: normal;
+    text-transform: none;
+}
+
+/* SVG Process Node Interaction */
+.process-node rect {
+    transition: all 0.2s ease;
+}
+
+.process-node:hover rect {
+    fill: #e7f3ff !important; /* Light blue highlight */
+    stroke: #007bff !important; /* Professional blue border */
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+}
+
+.process-node:active rect {
+    fill: #cfe2ff !important;
+}
+
+.process-node text {
+    pointer-events: none; /* Ensures clicking text still triggers the <g> tag */
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    border: 1px solid #000;
+    border-bottom: none;
+    background: #e9ecef;
+    cursor: pointer;
+}
+.tab-btn.active {
+    background: #fff;
+    font-weight: bold;
+}
+
+/* Control Detail Page - Disable text selection */
+.control-detail {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE 10 and older */
+    user-select: none;         /* Standard syntax */
+}
+
+.control-detail section,
+.control-detail div,
+.control-detail p {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/* ITGC Control Detail Page - Disable text selection */
+.itgc-control-detail {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE 10 and older */
+    user-select: none;         /* Standard syntax */
+}
+
+.itgc-control-detail section,
+.itgc-control-detail div,
+.itgc-control-detail p {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

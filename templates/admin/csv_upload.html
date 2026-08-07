@@ -1,0 +1,66 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static %}
+
+{% block title %}Upload CSV — {{ title }}{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+    › <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+    › <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+    › Upload CSV
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <h1>Upload {{ title }}</h1>
+
+    <p>
+        <strong>Download the template first</strong> — it is generated dynamically from the current model fields.
+        <a href="{{ download_url }}" class="button" style="margin-left:10px;">
+            ↓ Download {{ opts.verbose_name }} Template CSV
+        </a>
+    </p>
+
+    <div class="module">
+        <h2>Expected Columns ({{ expected_columns|length }})</h2>
+        <p class="help">
+            Your CSV <strong>must</strong> contain these exact column headers (order doesn't matter):
+        </p>
+        <ul style="columns: 3; font-family: monospace; font-size: 0.95em;">
+            {% for col in expected_columns %}
+                <li>{{ col }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="module aligned">
+            {{ form.as_p }}
+        </fieldset>
+
+        <div class="submit-row">
+            <input type="submit" value="Upload &amp; Process CSV" class="default">
+        </div>
+    </form>
+
+    {% if form.errors %}
+        <ul class="errorlist">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extrastyle %}
+<style>
+    ul { line-height: 1.6; }
+    .help { color: #666; font-style: italic; }
+</style>
+{% endblock %}

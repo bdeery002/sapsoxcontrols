@@ -1,0 +1,7 @@
+<h2>All Pages</h2>
+<ul>
+    {% for entry in entries %}
+        <li><a href="{% url 'blog:entry' title=entry.title %}">{{ entry.title }}</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'blog:propose_edit' %}" class="btn btn-primary">Propose New Entry</a>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block nav_extra %}
+    <a href="{% url 'blog:index' %}">Back to Blog Home</a>
+    <a href="{% url 'blog:propose_edit' %}">Propose New Entry</a>
+{% endblock %}
+
+{% block content %}
+    <h1>Search Results</h1>
+
+    {% if results %}
+        <ul>
+            {% for entry in results %}
+                <li>
+                    <a href="{% url 'blog:entry' title=entry %}">{{ entry }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found for "{{ query }}".</p>
+    {% endif %}
+{% endblock %}

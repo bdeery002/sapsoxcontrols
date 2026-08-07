@@ -1,0 +1,10 @@
+
+{# Override Django admin base template to add a "Back to Site" link in the header #}
+{% extends "admin/base_site.html" %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="/" style="text-decoration: none; color: inherit; margin-right: 20px;">← Back to Site</a>
+    {% block title %}{{ site_title|default:_('Django administration') }}{% endblock %}
+</h1>
+{% endblock %}

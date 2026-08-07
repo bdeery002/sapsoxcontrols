@@ -1,0 +1,6 @@
+<!-- templates/blog/_sidebar.html -->
+<form action="{% url 'blog:search' %}" method="get">
+    <input class="search" type="text" name="q" placeholder="Search Blogs">
+</form>
+
+<a href="{% url 'blog:propose_edit' %}">Propose New Entry</a>

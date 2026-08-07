@@ -1,0 +1,146 @@
+{% comment %}
+  Dynamic workflow SVG — driven entirely by SubProcess model ordering.
+  primary_nodes: SubProcess queryset (is_primary_flow=True), ordered by sequence_order
+  secondary_nodes: SubProcess queryset (is_primary_flow=False)
+{% endcomment %}
+
+{% with node_width=172 node_height=70 gap=50 start_x=10 cy=75 %}
+{% with total_primary=primary_nodes|length %}
+
+<svg width="100%" 
+     height="{% if secondary_nodes %}280{% else %}150{% endif %}" 
+     viewBox="0 0 900 {% if secondary_nodes %}280{% else %}150{% endif %}"
+     preserveAspectRatio="xMinYMid meet">
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280" />
+    </marker>
+  </defs>
+
+  <text x="10" y="20" font-size="12" font-style="italic" fill="#6b7280">
+    {{ process.name }} Workflow
+  </text>
+
+  {# ── Primary flow nodes ── #}
+  {% for node in primary_nodes %}
+    {% with x=forloop.counter0|add:0 %}
+    {# x position: start_x + index * (node_width + gap) #}
+    {# Django templates can't do math natively so we use inline style with CSS custom properties #}
+
+    <g class="process-node"
+       hx-get="{% url 'sox_controls:filter_by_subprocess' node.slug %}"
+       hx-target="#control-results"
+       hx-push-url="false"
+       style="cursor: pointer;"
+       data-index="{{ forloop.counter0 }}"
+       data-node-width="{{ node_width }}"
+       data-gap="{{ gap }}"
+       data-start="{{ start_x }}">
+
+      {# Position is set via JS below since Django templates can't multiply #}
+      <rect class="workflow-rect"
+            y="40" 
+            width="{{ node_width }}" 
+            height="{{ node_height }}" 
+            rx="8" 
+            fill="#f8f9fa" 
+            stroke="#d1d5db" 
+            stroke-width="2"/>
+      <text class="workflow-label" 
+            y="{{ cy }}" 
+            dy="5"
+            text-anchor="middle" 
+            font-family="Arial" 
+            font-size="13"
+            font-weight="600"
+            fill="#111827">
+        {{ node.name }}
+      </text>
+    </g>
+
+    {# Arrow between nodes (not after the last one) #}
+    {% if not forloop.last %}
+      <line class="workflow-arrow"
+            y1="{{ cy }}" 
+            y2="{{ cy }}" 
+            stroke="#9ca3af" 
+            stroke-width="2" 
+            marker-end="url(#arrowhead)"
+            data-index="{{ forloop.counter0 }}"
+            data-node-width="{{ node_width }}"
+            data-gap="{{ gap }}"
+            data-start="{{ start_x }}"/>
+    {% endif %}
+
+    {% endwith %}
+  {% endfor %}
+
+  {# ── Secondary (off-flow) nodes ── #}
+  {% if secondary_nodes %}
+    <text x="10" y="175" font-size="11" font-style="italic" fill="#9ca3af">Related processes</text>
+    {% for node in secondary_nodes %}
+      <g class="process-node secondary-node"
+         hx-get="{% url 'sox_controls:filter_by_subprocess' node.slug %}"
+         hx-target="#control-results"
+         hx-push-url="false"
+         style="cursor: pointer;"
+         data-secondary-index="{{ forloop.counter0 }}"
+         data-node-width="{{ node_width }}"
+         data-gap="{{ gap }}">
+        <rect class="workflow-rect secondary-rect"
+              y="185"
+              width="{{ node_width }}"
+              height="{{ node_height }}"
+              rx="8"
+              fill="#eff6ff"
+              stroke="#bfdbfe"
+              stroke-width="2"/>
+        <text class="workflow-label"
+              y="220"
+              dy="5"
+              text-anchor="middle"
+              font-family="Arial"
+              font-size="13"
+              font-weight="600"
+              fill="#1e40af">
+          {{ node.name }}
+        </text>
+      </g>
+    {% endfor %}
+  {% endif %}
+
+</svg>
+
+<script>
+  (function () {
+    const NODE_WIDTH = {{ node_width }};
+    const GAP = {{ gap }};
+    const START_X = {{ start_x }};
+
+    document.querySelectorAll('.process-node:not(.secondary-node)').forEach(function(g) {
+      const i = parseInt(g.dataset.index);
+      const x = START_X + i * (NODE_WIDTH + GAP);
+      g.querySelector('rect').setAttribute('x', x);
+      g.querySelector('text').setAttribute('x', x + NODE_WIDTH / 2);
+    });
+
+    document.querySelectorAll('.workflow-arrow').forEach(function(line) {
+      const i = parseInt(line.dataset.index);
+      const x1 = START_X + (i + 1) * (NODE_WIDTH + GAP) - GAP + 2;
+      const x2 = START_X + (i + 1) * (NODE_WIDTH + GAP) - 2;
+      line.setAttribute('x1', x1);
+      line.setAttribute('x2', x2);
+    });
+
+    document.querySelectorAll('.secondary-node').forEach(function(g) {
+      const i = parseInt(g.dataset.secondaryIndex);
+      const x = START_X + i * (NODE_WIDTH + GAP);
+      g.querySelector('rect').setAttribute('x', x);
+      g.querySelector('text').setAttribute('x', x + NODE_WIDTH / 2);
+    });
+  })();
+</script>
+
+{% endwith %}
+{% endwith %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block nav_extra %}{% include "blog/_sidebar.html" %}{% endblock %}
+
+{% block body %}
+    <h1>{{ title }}</h1>
+
+    <div class="entry-content">
+        {{ content|safe }}
+    </div>
+
+    <hr>
+    <a href="{% url 'blog:propose_edit_with_title' title=title %}" class="btn-save">Propose an Edit</a>
+{% endblock %}
