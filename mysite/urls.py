@@ -25,6 +25,7 @@ admin.site.site_header = "SOX Dashboard"
 admin.site.site_title = "SOX Admin"
 
 urlpatterns = [
+    re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
     path("admin/", admin.site.urls),
     path('', include("about.urls")),  # Home page (/, /projects/, /contact/)
     path('blog/', include("blog.urls", namespace="blog")),
@@ -32,10 +33,3 @@ urlpatterns = [
     path('itgc/', include('itgc.urls', namespace='itgc')),
 ]
 
-from django.conf import settings
-from django.urls import re_path
-from django.views.static import serve
-
-urlpatterns += [
-    re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
-]
