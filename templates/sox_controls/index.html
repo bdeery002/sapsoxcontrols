@@ -3,7 +3,7 @@
 {% block content %}
 <h1>SAP Business Process Controls (SOX)</h1>
 
-<div class="tabs" style="display: flex; gap: 5px; margin-bottom: 0;">
+<div class="tabs" style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0;">
     {% for process in processes %}
     <button class="tab-btn {% if forloop.first %}active{% endif %}"
             hx-get="{% url 'sox_controls:load_workflow' process.slug %}"
@@ -32,37 +32,39 @@
         </button>
     </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th class="col-id">CONTROL ID</th>
-                <th class="col-proc">PROCESS</th>
-                <th class="col-sub">SUB-PROCESS</th>
-                <th class="col-risk">RISK</th>
-                <th class="col-desc">CONTROL DESCRIPTION</th>
-            </tr>
-            <tr class="filter-row">
-                <th><input type="text" name="filter_id" placeholder="Filter..." 
-                           hx-get="{% url 'sox_controls:index' %}" hx-trigger="keyup changed delay:300ms" 
-                           hx-target="#control-results" hx-include="nearest tr"></th>
-                <th><input type="text" id="filter-proc" name="filter_proc" placeholder="Filter..." 
-                           hx-get="{% url 'sox_controls:index' %}" hx-trigger="keyup changed delay:300ms" 
-                           hx-target="#control-results" hx-include="nearest tr"></th>
-                <th><input type="text" id="filter-sub" name="filter_sub" placeholder="Filter..." 
-                           hx-get="{% url 'sox_controls:index' %}" hx-trigger="keyup changed delay:300ms" 
-                           hx-target="#control-results" hx-include="nearest tr"></th>
-                <th><input type="text" name="filter_risk" placeholder="Filter..." 
-                           hx-get="{% url 'sox_controls:index' %}" hx-trigger="keyup changed delay:300ms" 
-                           hx-target="#control-results" hx-include="nearest tr"></th>
-                <th><input type="text" name="filter_desc" placeholder="Filter..." 
-                           hx-get="{% url 'sox_controls:index' %}" hx-trigger="keyup changed delay:300ms" 
-                           hx-target="#control-results" hx-include="nearest tr"></th>
-            </tr>
-        </thead>
-        <tbody id="control-results">
-            {% include "sox_controls/partials/control_table_rows.html" %}
-        </tbody>
-    </table>
+    <div style="width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+        <table class="table" style="min-width: 700px;">
+            <thead>
+                <tr>
+                    <th class="col-id">CONTROL ID</th>
+                    <th class="col-proc">PROCESS</th>
+                    <th class="col-sub">SUB-PROCESS</th>
+                    <th class="col-risk">RISK</th>
+                    <th class="col-desc">CONTROL DESCRIPTION</th>
+                </tr>
+                <tr class="filter-row">
+                    <th><input type="text" name="filter_id" placeholder="Filter..." 
+                               hx-get="{% url 'sox_controls:index' %}" hx-trigger="keyup changed delay:300ms" 
+                               hx-target="#control-results" hx-include="nearest tr"></th>
+                    <th><input type="text" id="filter-proc" name="filter_proc" placeholder="Filter..." 
+                               hx-get="{% url 'sox_controls:index' %}" hx-trigger="keyup changed delay:300ms" 
+                               hx-target="#control-results" hx-include="nearest tr"></th>
+                    <th><input type="text" id="filter-sub" name="filter_sub" placeholder="Filter..." 
+                               hx-get="{% url 'sox_controls:index' %}" hx-trigger="keyup changed delay:300ms" 
+                               hx-target="#control-results" hx-include="nearest tr"></th>
+                    <th><input type="text" name="filter_risk" placeholder="Filter..." 
+                               hx-get="{% url 'sox_controls:index' %}" hx-trigger="keyup changed delay:300ms" 
+                               hx-target="#control-results" hx-include="nearest tr"></th>
+                    <th><input type="text" name="filter_desc" placeholder="Filter..." 
+                               hx-get="{% url 'sox_controls:index' %}" hx-trigger="keyup changed delay:300ms" 
+                               hx-target="#control-results" hx-include="nearest tr"></th>
+                </tr>
+            </thead>
+            <tbody id="control-results">
+                {% include "sox_controls/partials/control_table_rows.html" %}
+            </tbody>
+        </table>
+    </div>
 </section>
 
 <script>
