@@ -305,3 +305,24 @@ tr:hover {
     -ms-user-select: none;
     user-select: none;
 }
+
+/* ==========================================================================
+   7. MOBILE RESPONSIVE ADAPTATIONS (Media Query)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stacks sidebar on top of main content on mobile */
+    }
+
+    .sidebar {
+        width: 100%;          /* Full width on mobile */
+        min-width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #dee2e6; /* Moves bottom border line */
+        padding: 1rem;
+    }
+
+    .main-content {
+        padding: 20px 15px;    /* Tighter mobile padding */
+    }
+}
