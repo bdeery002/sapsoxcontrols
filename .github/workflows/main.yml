@@ -5,25 +5,15 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
-    
-    services:
-      postgres:
-        image: postgres:15
-        env:
-          POSTGRES_PASSWORD: postgres
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       
       - run: pip install -r requirements.txt
+      
       - env:
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_neondb
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: python manage.py test sox_controls itgc --keepdb
