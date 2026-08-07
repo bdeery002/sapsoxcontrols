@@ -15,8 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+from django.conf import settings
+from django.views.static import serve
+from django.urls import include, path, re_path
 from django.contrib import admin
-from django.urls import include, path
 from django_ratelimit.decorators import ratelimit
 
 admin.site.login = ratelimit(key='ip', rate='5/m')(admin.site.login)
@@ -27,9 +29,8 @@ admin.site.site_title = "SOX Admin"
 urlpatterns = [
     re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
     path("admin/", admin.site.urls),
-    path('', include("about.urls")),  # Home page (/, /projects/, /contact/)
-    path('blog/', include("blog.urls", namespace="blog")),
-    path('sox_controls/', include('sox_controls.urls', namespace='sox_controls')),
-    path('itgc/', include('itgc.urls', namespace='itgc')),
+    path("", include("about.urls")),
+    path("blog/", include("blog.urls", namespace="blog")),
+    path("sox_controls/", include("sox_controls.urls", namespace="sox_controls")),
+    path("itgc/", include("itgc.urls", namespace="itgc")),
 ]
-
