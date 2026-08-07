@@ -31,3 +31,11 @@ urlpatterns = [
     path('sox_controls/', include('sox_controls.urls', namespace='sox_controls')),
     path('itgc/', include('itgc.urls', namespace='itgc')),
 ]
+
+from django.conf import settings
+from django.urls import re_path
+from django.views.static import serve
+
+urlpatterns += [
+    re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
+]
