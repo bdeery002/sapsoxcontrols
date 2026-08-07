@@ -141,7 +141,6 @@ STORAGES = {
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedStaticFilesStorage"},
 }
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 CSRF_TRUSTED_ORIGINS = [
     "https://sapsoxcontrols.com",

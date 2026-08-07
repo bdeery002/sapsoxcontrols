@@ -21,13 +21,12 @@ from django.urls import include, path, re_path
 from django.contrib import admin
 from django_ratelimit.decorators import ratelimit
 
-admin.site.login = ratelimit(key='ip', rate='5/m')(admin.site.login)
+admin.site.login = ratelimit(key="ip", rate="5/m")(admin.site.login)
 
 admin.site.site_header = "SOX Dashboard"
 admin.site.site_title = "SOX Admin"
 
 urlpatterns = [
-    re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
     path("admin/", admin.site.urls),
     path("", include("about.urls")),
     path("blog/", include("blog.urls", namespace="blog")),
