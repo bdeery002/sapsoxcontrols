@@ -7,3 +7,4 @@ django-allauth
 django-ratelimit
 python-dotenv
 gunicorn
+whitenoise
