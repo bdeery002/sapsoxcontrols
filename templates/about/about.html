@@ -74,8 +74,8 @@
     <section class="mission-section">
         <h2>SOX Control Baselines for SAP Environments</h2>
         <p>
-            This site was built to share a practical baseline, a set of SAP-centric business process controls and IT General Controls
-            (ITGCs) around which organizations can build and mature their SOX programs.
+            This site was built to share a practical baseline, a set of <a href="{% url 'sox_controls:index' %}" style="color: #007bff; text-decoration: underline;">SAP Business Process Controls (SOX)</a> and <a href="{% url 'itgc:index' %}" style="color: #007bff; text-decoration: underline;">SAP IT General Controls (ITGC)</a>
+            around which organizations can build and mature their SOX programs.
         </p>
         <p>
             The resources here cover key SAP business processes (Procure to Pay, Order to Cash, Record to Report, Acquire to Retire and Inventory) with mapped SOX controls,
@@ -90,14 +90,14 @@
         <h2>What's Included</h2>
         <div class="content-grid">
             <div class="content-item">
-                <h3>SAP Business Process Controls</h3>
+                <h3><a href="{% url 'sox_controls:index' %}" style="color: #007bff; text-decoration: none;">SAP Business Process Controls</a></h3>
                 <p>
-                    Baseline control matrices for key SAP processes (Procure to Pay, Order to Cash, Record to Report,Acquire to Retire and Inventory). Each includes business
+                    Baseline control matrices for key SAP processes (Procure to Pay, Order to Cash, Record to Report, Acquire to Retire and Inventory). Each includes business
                     risks, control objectives, and control designs mapped to SOX compliance requirements.
                 </p>
             </div>
             <div class="content-item">
-                <h3>IT General Controls (ITGCs)</h3>
+                <h3><a href="{% url 'itgc:index' %}" style="color: #007bff; text-decoration: none;">IT General Controls (ITGCs)</a></h3>
                 <p>
                     Core ITGC frameworks for SAP access management, change control,
                     batch processing, and backup management.
@@ -108,12 +108,12 @@
                 <p>
                     Interactive workflow dashboards showing SAP business process flows and how controls map to SOX requirements. 
                     Click on any process node to filter and explore related controls, test procedures, and audit evidence. 
-        Workflows visualize both primary processes and related controls in an intuitive, click-driven interface.
+                    Workflows visualize both primary processes and related controls in an intuitive, click-driven interface.
                 </p>
             </div>
-            
         </div>
     </section>
+
 
     <!-- How to Use -->
     <section class="usage-section">
