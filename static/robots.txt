@@ -38,6 +38,9 @@ Disallow: /
 User-Agent: Bytespider
 Disallow: /
 
+User-Agent: GrokBot
+Disallow: /
+
 # Allow major search engines
 User-Agent: Googlebot
 Allow: /
