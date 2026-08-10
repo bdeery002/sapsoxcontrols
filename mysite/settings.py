@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",  
+    "django.contrib.sitemaps",
     "adminsortable2",
     "blog",
     "sox_controls",
@@ -54,6 +56,7 @@ INSTALLED_APPS = [
     
 ]
 
+SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

@@ -17,6 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django_ratelimit.decorators import ratelimit
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import StaticViewSitemap, SoxControlsSitemap, ITGCSitemap
+
+sitemaps = {
+    "static": StaticViewSitemap,
+    "sox_controls": SoxControlsSitemap,
+    "itgc": ITGCSitemap,
+}
 
 admin.site.login = ratelimit(key="ip", rate="5/m")(admin.site.login)
 
@@ -29,4 +37,5 @@ urlpatterns = [
     path("blog/", include("blog.urls", namespace="blog")),
     path("sox_controls/", include("sox_controls.urls", namespace="sox_controls")),
     path("itgc/", include("itgc.urls", namespace="itgc")),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django.contrib.sitemaps.views.sitemap"),
 ]
