@@ -1,4 +1,4 @@
-# Block AI training crawlers
+# Block AI training crawlers only
 User-Agent: GPTBot
 Disallow: /
 
@@ -8,40 +8,53 @@ Disallow: /
 User-Agent: anthropic-ai
 Disallow: /
 
-User-Agent: Claude-Web
+User-Agent: ClaudeBot
 Disallow: /
 
-User-Agent: OAI-SearchBot
+User-Agent: Google-Extended
 Disallow: /
 
-User-Agent: Perplexity-AI
+User-Agent: Applebot-Extended
 Disallow: /
 
-User-Agent: Cohere
+User-Agent: Cohere-ai
 Disallow: /
 
-User-Agent: MicrosoftBot
-Disallow: /
-
-User-Agent: Meta-Externalagent
-Disallow: /
-
-User-Agent: AmazonBot
-Disallow: /
-
-User-Agent: AppleBot
-Disallow: /
-
-User-Agent: DuckAssistant
+User-Agent: Meta-ExternalAgent
 Disallow: /
 
 User-Agent: Bytespider
 Disallow: /
 
-User-Agent: GrokBot
+User-Agent: Diffbot
 Disallow: /
 
-# Allow major search engines
+User-Agent: Omgili
+Disallow: /
+
+# Allow AI retrieval/answer crawlers (these power citations in AI answers)
+User-Agent: OAI-SearchBot
+Allow: /
+
+User-Agent: ChatGPT-User
+Allow: /
+
+User-Agent: Claude-User
+Allow: /
+
+User-Agent: Claude-SearchBot
+Allow: /
+
+User-Agent: PerplexityBot
+Allow: /
+
+User-Agent: Applebot
+Allow: /
+
+User-Agent: Amazonbot
+Allow: /
+
+# Search engines
 User-Agent: Googlebot
 Allow: /
 
@@ -51,6 +64,8 @@ Allow: /
 User-Agent: Slurp
 Allow: /
 
-# Default: allow all others
+# Default
 User-Agent: *
 Allow: /
+
+Sitemap: https://www.sapsoxcontrols.com/sitemap.xml
