@@ -19,6 +19,10 @@ from django.urls import include, path
 from django_ratelimit.decorators import ratelimit
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StaticViewSitemap, SoxControlsSitemap, ITGCSitemap
+from django.http import HttpResponse
+
+def indexnow_key(request):
+    return HttpResponse("f0c10fb63b9d480e9d6adfc5ece2d5ff", content_type="text/plain")
 
 sitemaps = {
     "static": StaticViewSitemap,
@@ -38,4 +42,5 @@ urlpatterns = [
     path("sox_controls/", include("sox_controls.urls", namespace="sox_controls")),
     path("itgc/", include("itgc.urls", namespace="itgc")),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django.contrib.sitemaps.views.sitemap"),
+    path("f0c10fb63b9d480e9d6adfc5ece2d5ff.txt", indexnow_key),
 ]
