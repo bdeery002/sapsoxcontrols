@@ -80,8 +80,12 @@
         <p>
             The resources here cover key SAP business processes - 
             {% for process in processes %}
-    <a href="{% url 'sox_controls:index' %}?process={{ process.slug }}">{{ process.name }}</a>
-{% endfor %} with mapped SOX controls, implementation guidance, and test procedures, as well as core ITGCs (access management, change control, computer operations) that apply across SAP environments. Each control ID links to a detail page with the control description, related risk, implementation guidance, and test procedures.
+                <a href="{% url 'sox_controls:index' %}?process={{ process.slug }}">{{ process.name }}</a>
+                {% if forloop.revcounter == 2 %} and
+                {% elif not forloop.last %}, {% endif %}
+            {% endfor %} 
+
+, with mapped SOX controls, implementation guidance, and test procedures, as well as core ITGCs (access management, change control, computer operations) that apply across SAP environments. Each control ID links to a detail page with the control description, related risk, implementation guidance, and test procedures.
         </p>
     
         <p>
