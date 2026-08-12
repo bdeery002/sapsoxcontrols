@@ -275,17 +275,16 @@ tr:hover {
     font-weight: bold;
 }
 
-/* Workflow container scrolling on mobile */
+/* Workflow scales on desktop, scrolls on mobile */
 #workflow-container {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow-x: visible;
 }
 
 .workflow-svg {
     display: block;
     width: 100%;
     height: auto;
-    max-width: none;
+    min-width: auto !important;
 }
 
 .workflow-tip {
@@ -297,6 +296,17 @@ tr:hover {
     color: #9ca3af;
 }
 
+@media (max-width: 768px) {
+    #workflow-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .workflow-svg {
+        width: auto !important;
+        max-width: none;
+    }
+}
 
 
 /* Control Detail Page - Disable text selection */

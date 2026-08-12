@@ -122,6 +122,18 @@
     const NODE_WIDTH = {{ node_width }};
     const GAP = {{ gap }};
     const START_X = {{ start_x }};
+    const primaryCount = {{ primary_nodes|length }};
+    const secondaryCount = {{ secondary_nodes|length }};
+
+    const maxNodes = Math.max(primaryCount, secondaryCount);
+    const svgWidth = maxNodes > 0
+      ? START_X + maxNodes * NODE_WIDTH + (maxNodes - 1) * GAP + START_X
+      : START_X * 2;
+    const svgHeight = secondaryCount ? 280 : 150;
+
+    const svg = document.querySelector('.workflow-svg');
+    svg.setAttribute('width', svgWidth);
+    svg.setAttribute('viewBox', `0 0 ${svgWidth} ${svgHeight}`);
 
     document.querySelectorAll('.process-node:not(.secondary-node)').forEach(function(g) {
       const i = parseInt(g.dataset.index);
