@@ -80,12 +80,12 @@
         <p>
             The resources here cover key SAP business processes - 
             {% for process in processes %}
-                <a href="{% url 'sox_controls:index' %}?process={{ process.slug }}">{{ process.name }}</a>
+                <a href="{% url 'sox_controls:index' %}?process={{ process.slug }}" style="color: #007bff; text-decoration: underline;">{{ process.name }}</a>
                 {% if forloop.revcounter == 2 %} and
                 {% elif not forloop.last %}, {% endif %}
             {% endfor %} 
 
-, with mapped SOX controls, implementation guidance, and test procedures, as well as core ITGCs (access management, change control, computer operations) that apply across SAP environments. Each control ID, for example, <a href="{% url 'sox_controls:control_detail' 'P2P-01' %}"> P2P-001 - Vendor Master Data -Dual Control</a> ,  links to a detail page with the control description, related risk, implementation guidance, and test procedures.
+, with mapped SOX controls, implementation guidance, and test procedures, as well as core ITGCs (access management, change control, computer operations) that apply across SAP environments. Each control ID, for example, <a href="{% url 'sox_controls:control_detail' 'P2P-01' %}" style="color: #007bff; text-decoration: underline;"> P2P-001 - Vendor Master Data -Dual Control</a> ,  links to a detail page with the control description, related risk, implementation guidance, and test procedures.
     
         <p>
             These baselines are intended to be starting points, not final solutions. They are designed to help organizations assess their current state, design controls, plan testing, and maintain controls as their SAP environments evolve.
