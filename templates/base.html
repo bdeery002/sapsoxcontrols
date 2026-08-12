@@ -5,28 +5,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}SAP Business Process Controls (SOX){% endblock %}</title>
-    <meta name="description" content="{% block meta_description %}Brendan Deery: Bay Area audit leader with Big 4 experience. Practical SAP business process controls, SOX frameworks, and ITGC standards. CA/CPA, CISA, CISSP.{% endblock %}">
+    <title>{% block title %}SAP Business Process Controls & ITGCs (SOX){% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Brendan Deery: SAP audit & IT SOX leader (Big 4, CA/CPA, CISA, CISSP). Baseline SAP ITGCs, automated controls, and SOX frameworks for SAP-centric environments.{% endblock %}">
     <link rel="canonical" href="https://sapsoxcontrols.com{{ request.path }}">
-    <meta property="og:title" content="SAP Controls & SOX Frameworks | Brendan Deery">
-    <meta property="og:description" content="Bay Area audit leader with Big 4 experience sharing practical SAP business process controls and ITGC frameworks.">
-    <meta property="og:url" content="https://sapsoxcontrols.com">
+    <meta property="og:title" content="{% block og_title %}SAP Controls & SOX Frameworks | Brendan Deery{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Baseline SAP ITGCs, automated controls, and SOX frameworks for SAP-centric environments.{% endblock %}"> 
+    <meta property="og:url" content="https://sapsoxcontrols.com{{ request.path }}">
     <meta property="og:type" content="website">
     <meta name="msvalidate.01" content="DC4D5946C875566984197C72ED5A4D17" />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 
-    <script type="application/ld+json">
-        {
+<script type="application/ld+json">
+       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Brendan Deery",
-        "jobTitle": "Senior Manager, IT Internal Audit",
-        "description": "Bay Area audit professional specializing in SAP controls, SOX, and Big 4 ITGC frameworks.",
-        "knowsAbout": ["SAP", "SOX Controls", "ITGC", "Internal Audit", "IT Security"],
+        "@type": "WebSite",
+        "name": "SAP SOX Control Baselines",
         "url": "https://sapsoxcontrols.com",
-        "sameAs": ["https://www.linkedin.com/in/brendan-deery-b14a8128/"]
+        "description": "Baseline SAP business process controls, SAP ITGCs, and SOX compliance frameworks for SAP-centric environments.",
+        "author": {
+            "@type": "Person",
+            "name": "Brendan Deery",
+            "jobTitle": "Senior Manager, IT Internal Audit",
+            "description": "Bay Area audit professional specializing in SAP controls, IT SOX, SAP ITGCs, and SAP automated controls.",
+            "knowsAbout": [
+                        "SAP Audit",
+                        "IT SOX",
+                        "SAP ITGC",
+                        "SAP Automated Controls",
+                        "SAP GRC",
+                        "SAP Compliance",
+                        "SOX Controls",
+                        "Internal Audit",
+                        "SAP S/4HANA",
+                        "Segregation of Duties (SoD)",
+                        "ICFR",
+                        "PCAOB Audit Standards",
+                        "SOC 1",
+                        "Workday Controls",
+                        "Audit Data Analytics",
+                        "Cybersecurity Risk Assessment"
+                        ],
+            "sameAs": ["https://www.linkedin.com/in/brendan-deery-b14a8128/"]
         }
+    }
     </script>
 </head>
 <body>
