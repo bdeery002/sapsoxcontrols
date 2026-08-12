@@ -275,6 +275,31 @@ tr:hover {
     font-weight: bold;
 }
 
+/* Workflow container scrolling on mobile */
+#workflow-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.workflow-svg {
+    display: block;
+    min-width: 900px;
+    width: 900px;
+    height: auto;
+    max-width: none;
+}
+
+.workflow-tip {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 11px;
+    font-style: italic;
+    color: #9ca3af;
+}
+
+
+
 /* Control Detail Page - Disable text selection */
 .control-detail {
     -webkit-user-select: none; /* Safari */
