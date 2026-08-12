@@ -306,6 +306,13 @@ tr:hover {
     user-select: none;
 }
 
+.page-hint {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+}
+
 /* ==========================================================================
    7. MOBILE RESPONSIVE ADAPTATIONS (Media Query)
    ========================================================================== */
