@@ -283,8 +283,7 @@ tr:hover {
 
 .workflow-svg {
     display: block;
-    min-width: 900px;
-    width: 900px;
+    width: 100%;
     height: auto;
     max-width: none;
 }
