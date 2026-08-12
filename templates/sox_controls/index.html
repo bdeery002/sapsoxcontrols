@@ -3,9 +3,7 @@
 {% block content %}
 <h1>SAP Business Process Controls (SOX)</h1>
 
-<p class="page-hint">
-    <strong>Tip:</strong> Click a process tab to load the workflow and filter controls. Click a control ID for details.
-</p>
+
 
 <div class="tabs" style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0;">
     {% for process in processes %}
@@ -25,6 +23,11 @@
          hx-trigger="load" 
          style="background: #fff; padding: 20px 20px 20px 0px; border: 1px solid #000; margin-bottom: 30px; border-top: none; min-height: 180px;">
 </section>
+
+<p class="page-hint">
+    <strong>Tip:</strong> Click a process tab to load the workflow and filter controls. Click a control ID for details.
+</p>
+
 
 <section>
     <div style="display: flex; justify-content: space-between; align-items: center;">
