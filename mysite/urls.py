@@ -31,7 +31,6 @@ sitemaps = {
 }
 
 admin.site.login = ratelimit(key="ip", rate="5/m")(admin.site.login)
-
 admin.site.site_header = "SOX Dashboard"
 admin.site.site_title = "SOX Admin"
 

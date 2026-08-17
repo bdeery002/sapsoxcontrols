@@ -74,11 +74,15 @@ class SubProcess(models.Model):
     def __str__(self):
         return f"{self.business_process.name} › {self.name}"
 
-
 class SoxControl(models.Model):
     control_id = models.CharField(max_length=50, unique=True, blank=True)
     sub_process = models.ForeignKey(SubProcess, on_delete=models.PROTECT, related_name="controls")
     control_description = models.TextField()
+    short_description = models.CharField(
+            max_length=60,
+            blank=True,
+            help_text="Concise, keyword-forward phrase for page titles/SEO (e.g. 'Vendor Master Data Dual Control'). Falls back to control_description if blank."
+    )
     risk = models.TextField(help_text="Describe what could go wrong if this control fails.")
     CONTROL_TYPE_CHOICES = (
             ('preventative', 'Preventative'),

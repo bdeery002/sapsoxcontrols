@@ -196,7 +196,7 @@ class SubProcessAdmin(SortableAdminMixin, ModelCsvAdminMixin, admin.ModelAdmin):
 # ---------------------------
 @admin.register(SoxControl)
 class SoxControlAdmin(SortableAdminMixin, ModelCsvAdminMixin, admin.ModelAdmin):
-    list_display = ("control_id", "get_process", "sub_process", "control_description", "risk")
+    list_display = ("control_id", "get_process", "sub_process", 'short_description', "control_description", "risk")
     search_fields = ("control_id", "sub_process__name", "risk")
     list_filter = ("sub_process__business_process",)
     readonly_fields = ("control_id",)
@@ -208,7 +208,7 @@ class SoxControlAdmin(SortableAdminMixin, ModelCsvAdminMixin, admin.ModelAdmin):
                 "description": "Core control identifiers"
             }),
             ("Control Description & Risk", {
-                "fields": ("control_description", "risk"),
+                "fields": ("short_description", "control_description", "risk"),
             }),
             ("Control Classification", {
                 "fields": ("control_type", "execution_type"),
