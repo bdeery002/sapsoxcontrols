@@ -81,6 +81,11 @@ class ITGCControl(models.Model):
     """Individual ITGC control"""
     control_id = models.CharField(max_length=50, unique=True, blank=True)
     itgc_category = models.ForeignKey(ITGCCategory, on_delete=models.PROTECT, related_name="controls")
+    short_description = models.CharField(
+            max_length=60,
+            blank=True,
+            help_text="Concise, keyword-forward phrase for page titles/SEO (e.g. 'Password Management'). Falls back to control_description if blank."
+        )
     control_description = models.TextField()
     risk = models.TextField(help_text="Describe what could go wrong if this control fails.")
     

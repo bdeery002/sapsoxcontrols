@@ -197,7 +197,7 @@ class ITGCCategoryAdmin(SortableAdminMixin, ModelCsvAdminMixin, admin.ModelAdmin
 # ----
 @admin.register(ITGCControl)
 class ITGCControlAdmin(SortableAdminMixin, ModelCsvAdminMixin, admin.ModelAdmin):
-    list_display = ("control_id", "get_layer", "itgc_category", "control_description", "risk")
+    list_display = ("control_id", "get_layer", "itgc_category", "short_description", "control_description", "risk")
     search_fields = ("control_id", "itgc_category__name", "risk")
     list_filter = ("itgc_category__itgc_layer",)
     readonly_fields = ("control_id",)
@@ -209,7 +209,7 @@ class ITGCControlAdmin(SortableAdminMixin, ModelCsvAdminMixin, admin.ModelAdmin)
             "description": "Core control identifiers"
         }),
         ("Control Description & Risk", {
-            "fields": ("control_description", "risk"),
+            "fields": ("short_description", "control_description", "risk"),
         }),
         ("Control Classification", {
             "fields": ("control_type", "execution_type"),
