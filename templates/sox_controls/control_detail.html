@@ -34,6 +34,12 @@
                 <strong>Execution Type:</strong><br>
                 {{ control.get_execution_type_display }}
             </div>
+
+            <div>
+                <strong>Short Description:</strong><br>
+                {{ control.short_description|default:control.control_description|truncatechars:100 }}
+            </div>
+
             <div>
                 <strong>Effective Date:</strong><br>
                 {{ control.effective_date }}
