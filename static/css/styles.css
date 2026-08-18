@@ -216,14 +216,14 @@ table.table th {
 }
 
 /* Specific Column Widths */
-.col-id    { width: 8% !important; }
+.col-id    { width: 13% !important; }
 .col-proc  { width: 10% !important; }
 .col-sub   { 
     width: 10% !important; 
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
 }
-.col-risk  { width: 25% !important; }
+.col-risk  { width: 20% !important; }
 .col-short { width: 15% !important; }
 .col-desc  { width: 32% !important; }
 
