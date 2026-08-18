@@ -9,6 +9,13 @@
     <td>{{ control.sub_process.business_process.name }}</td>
     <td>{{ control.sub_process.name }}</td>
     <td>{{ control.risk }}</td>
+    <td class="col-short">
+        {% if control.short_description %}
+            {{ control.short_description }}
+        {% else %}
+            <span style="color: #999; font-style: italic;">—</span>
+        {% endif %}
+    </td>
     <td>{{ control.control_description }}</td>
 </tr>
 {% empty %}

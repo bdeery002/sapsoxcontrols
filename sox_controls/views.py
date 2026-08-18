@@ -23,9 +23,10 @@ def load_workflow(request, workflow_name):
 def index(request):
     """Main dashboard — handles full page loads and HTMX live-filtering."""
     f_sub  = request.GET.get('filter_sub', '')
+    f_short = request.GET.get('filter_short', '')
     f_desc = request.GET.get('filter_desc', '')
     f_risk = request.GET.get('filter_risk', '')
-
+    
     # Order by business process name, then by sequence_order descending
     controls = SoxControl.objects.select_related('sub_process__business_process').order_by(
         'sub_process__business_process__name', 'sequence_order'
@@ -33,11 +34,12 @@ def index(request):
 
     if f_sub:
         controls = controls.filter(sub_process__name__icontains=f_sub)
+    if f_short:
+            controls = controls.filter(short_description__icontains=f_short)
     if f_desc:
         controls = controls.filter(control_description__icontains=f_desc)
     if f_risk:
         controls = controls.filter(risk__icontains=f_risk)
-
 
     context = {
         "controls": controls,

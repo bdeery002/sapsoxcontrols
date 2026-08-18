@@ -43,6 +43,7 @@
                     <th class="col-proc">PROCESS</th>
                     <th class="col-sub">SUB-PROCESS</th>
                     <th class="col-risk">RISK</th>
+                    <th class="col-short">SHORT DESCRIPTION</th>
                     <th class="col-desc">CONTROL DESCRIPTION</th>
                 </tr>
                 <tr class="filter-row">
@@ -56,6 +57,9 @@
                                hx-get="{% url 'sox_controls:index' %}" hx-trigger="keyup changed delay:300ms" 
                                hx-target="#control-results" hx-include="nearest tr"></th>
                     <th><input type="text" name="filter_risk" placeholder="Filter..." 
+                               hx-get="{% url 'sox_controls:index' %}" hx-trigger="keyup changed delay:300ms" 
+                               hx-target="#control-results" hx-include="nearest tr"></th>
+                    <th><input type="text" name="filter_short" placeholder="Filter..." 
                                hx-get="{% url 'sox_controls:index' %}" hx-trigger="keyup changed delay:300ms" 
                                hx-target="#control-results" hx-include="nearest tr"></th>
                     <th><input type="text" name="filter_desc" placeholder="Filter..." 
