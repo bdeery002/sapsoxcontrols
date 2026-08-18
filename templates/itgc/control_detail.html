@@ -35,6 +35,15 @@
                 <strong>Execution Type:</strong><br>
                 {{ control.get_execution_type_display }}
             </div>
+    
+            {% if control.short_description %}
+            <div>
+
+                <strong>Short Description:</strong><br>
+                {{ control.short_description }}
+            </div>
+            {% endif %}
+
             <div>
                 <strong>Effective Date:</strong><br>
                 {{ control.effective_date }}
