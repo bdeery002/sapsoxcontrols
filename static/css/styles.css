@@ -228,12 +228,12 @@ table.table th {
 .col-desc  { width: 28% !important; }
 
 /* ITGC table column widths */
-.itgc-col-id    { width: 12% !important; }
-.itgc-col-layer { width: 12% !important; }
+.itgc-col-id    { width: 10% !important; }
+.itgc-col-layer { width: 10% !important; }
 .itgc-col-cat   { width: 14% !important; }
 .itgc-col-risk  { width: 20% !important; }
 .itgc-col-short { width: 18% !important; }
-.itgc-col-desc  { width: 24% !important; }
+.itgc-col-desc  { width: 28% !important; }
 
 
 
