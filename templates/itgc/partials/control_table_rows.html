@@ -9,6 +9,13 @@
     <td style="padding: 12px;">{{ control.itgc_category.itgc_layer.name }}</td>
     <td style="padding: 12px;">{{ control.itgc_category.name }}</td>
     <td style="padding: 12px;">{{ control.risk }}</td>
+    <td class="col-short" style="padding: 12px;">
+        {% if control.short_description %}
+            {{ control.short_description }}
+        {% else %}
+            <span style="color: #999; font-style: italic;">—</span>
+        {% endif %}
+    </td>
     <td style="padding: 12px;">{{ control.control_description }}</td>
 </tr>
 {% empty %}
