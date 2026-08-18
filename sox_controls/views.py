@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render
-from .models import SoxControl, BusinessProcess, SubProcess
+import markdown2
+from .models import SoxControl, BusinessProcess, SubProcess, ProcessNarrative
 from mysite.constants import TEMPLATE_REGISTRY as T
 
 def load_workflow(request, workflow_name):
@@ -83,3 +84,13 @@ def control_detail(request, control_id):
         "is_authenticated": request.user.is_authenticated,
     }
     return render(request, T["SOX_CONTROL_DETAIL"]["path"], context)
+
+def process_narrative(request, slug):
+    narrative = get_object_or_404(
+        ProcessNarrative, slug=slug, is_published=True
+    )
+    content_html = markdown2.markdown(narrative.content)
+    return render(request, "sox_controls/process_narrative.html", {
+        "narrative": narrative,
+        "content_html": content_html,
+    })

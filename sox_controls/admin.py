@@ -10,7 +10,7 @@ from django.shortcuts import redirect, render
 from django.urls import path
 from adminsortable2.admin import SortableAdminMixin
 
-from .models import BusinessProcess, SubProcess, SoxControl
+from .models import BusinessProcess, ProcessNarrative, SubProcess, SoxControl
 
 
 # ---------------------------
@@ -267,3 +267,10 @@ class SoxControlAdmin(SortableAdminMixin, ModelCsvAdminMixin, admin.ModelAdmin):
         if 'delete_selected' in actions:
             del actions['delete_selected']
         return actions
+
+@admin.register(ProcessNarrative)
+class ProcessNarrativeAdmin(admin.ModelAdmin):
+    list_display = ["title", "business_process", "is_published", "updated_at"]
+    prepopulated_fields = {"slug": ("title",)}
+    search_fields = ["title", "business_process__name"]
+    list_filter = ["business_process", "is_published"]

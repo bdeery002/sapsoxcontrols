@@ -173,3 +173,45 @@ class SoxControl(models.Model):
 
     def __str__(self):
         return f"{self.control_id} – {self.sub_process.name}"
+
+
+class ProcessNarrative(models.Model):
+    business_process = models.OneToOneField(
+        BusinessProcess,
+        on_delete=models.CASCADE,
+        related_name="narrative",
+        help_text="The business process this narrative describes."
+    )
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True)
+    summary = models.TextField(
+        blank=True,
+        help_text="Short summary shown in listings."
+    )
+    content = models.TextField(
+        help_text="Process narrative content in Markdown."
+    )
+    disclaimer = models.TextField(
+        default="This process narrative is provided as a generic reference describing a typical SAP S/4HANA process flow. Actual business processes, transaction codes, Fiori apps, and control configurations may differ based on your organization's specific SAP implementation, release, cloud/on-premise deployment, and industry configuration. Please validate against your own SAP system and control documentation.",
+        help_text="Caveat displayed at the top of the narrative."
+    )
+    is_published = models.BooleanField(default=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Process Narrative"
+        verbose_name_plural = "Process Narratives"
+        ordering = ["business_process__name"]
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse("sox_controls:process_narrative", kwargs={"slug": self.slug})
+
+    def __str__(self):
+        return self.title
