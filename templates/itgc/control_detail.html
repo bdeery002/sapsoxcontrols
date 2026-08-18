@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}{{ control.control_id }}: {{ control.short_description|default:control.control_description|truncatechars:50 }} | SAP ITGC Baseline{% endblock %}
+{% block title %}{{ control.control_id }}: {{ control.short_description|default:control.control_description|truncatechars:60 }} | SAP ITGC Baseline{% endblock %}
 
 {% block meta_description %}{{ control.control_id }} - {{ control.itgc_category.name }}: {{ control.short_description|default:control.control_description|truncatechars:120 }}{% endblock %}
 
-{% block og_title %}{{ control.control_id }}: {{ control.short_description|default:control.control_description|truncatechars:50 }} | SAP ITGC Baseline{% endblock %}
+{% block og_title %}{{ control.control_id }}: {{ control.short_description|default:control.control_description|truncatechars:60 }} | SAP ITGC Baseline{% endblock %}
 
 {% block og_description %}{{ control.short_description|default:control.control_description|truncatechars:150 }}{% endblock %}
 
