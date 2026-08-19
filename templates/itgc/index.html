@@ -8,6 +8,20 @@
 {% block content %}
 <h1>IT General Controls (SOX)</h1>
 
+<section class="itgc-narratives">
+  <h2>ITGC Narratives</h2>
+  <p>Read the generic process narratives that describe how ITGC controls fit together:</p>
+  <div class="narrative-links">
+    {% for narrative in narratives %}
+      <a href="{{ narrative.get_absolute_url }}" class="narrative-link">
+        {{ narrative.title }}
+      </a>
+    {% empty %}
+      <p>No ITGC narratives have been published yet.</p>
+    {% endfor %}
+  </div>
+</section>
+
 <!-- Filter Section -->
 <div style="background: #fcfcfc; padding: 15px; margin-bottom: 20px; border: 1px solid #000;">
     <form hx-get="{% url 'itgc:index' %}" hx-target="#control-results" hx-push-url="false">

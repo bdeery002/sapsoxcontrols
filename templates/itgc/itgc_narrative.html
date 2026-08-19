@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}{{ narrative.title }}{% endblock %}
+{% block meta_description %}{{ narrative.summary|default:narrative.title|truncatechars:160 }}{% endblock %}
+{% block og_title %}{{ narrative.title }}{% endblock %}
+{% block og_description %}{{ narrative.summary|default:narrative.title|truncatechars:200 }}{% endblock %}
+
+{% block content %}
+<div class="itgc-narrative">
+  <p class="disclaimer">
+    {{ narrative.disclaimer }}
+  </p>
+
+  <h1>{{ narrative.title }}</h1>
+
+  {% if narrative.summary %}
+    <p class="lead">{{ narrative.summary }}</p>
+  {% endif %}
+
+  <div class="narrative-content">
+    {{ narrative.content_html|safe }}
+  </div>
+
+  <section class="narrative-controls">
+    <h2>Related ITGC Controls</h2>
+    {% if controls %}
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="col-id">Control ID</th>
+              <th class="col-layer">Layer</th>
+              <th class="col-cat">Category</th>
+              <th class="col-short">Short Description</th>
+              <th class="col-desc">Control Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for control in controls %}
+              <tr>
+                <td class="col-id">
+                  <a href="{% url 'itgc:control_detail' control.control_id %}">
+                    {{ control.control_id }}
+                  </a>
+                </td>
+                <td class="col-layer">{{ control.itgc_category.itgc_layer.name }}</td>
+                <td class="col-cat">{{ control.itgc_category.name }}</td>
+                <td class="col-short">{{ control.short_description }}</td>
+                <td class="col-desc">{{ control.control_description }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <p>No controls are currently linked to this narrative.</p>
+    {% endif %}
+  </section>
+
+  <p>
+    <a href="{% url 'itgc:index' %}">← Back to ITGC dashboard</a>
+  </p>
+</div>
+{% endblock %}

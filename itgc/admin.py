@@ -10,7 +10,7 @@ from django.shortcuts import redirect, render
 from django.urls import path
 from adminsortable2.admin import SortableAdminMixin
 
-from .models import ITGCLayer, ITGCCategory, ITGCControl
+from .models import ITGCLayer, ITGCCategory, ITGCControl, ItgcNarrative
 
 
 # ----
@@ -268,3 +268,13 @@ class ITGCControlAdmin(SortableAdminMixin, ModelCsvAdminMixin, admin.ModelAdmin)
         if 'delete_selected' in actions:
             del actions['delete_selected']
         return actions
+
+
+@admin.register(ItgcNarrative)
+class ItgcNarrativeAdmin(admin.ModelAdmin):
+    list_display = ["title", "slug", "is_published", "updated_at"]
+    list_filter = ["is_published", "categories__itgc_layer"]
+    prepopulated_fields = {"slug": ("title",)}
+    search_fields = ["title", "summary", "content"]
+    filter_horizontal = ["categories"]
+    

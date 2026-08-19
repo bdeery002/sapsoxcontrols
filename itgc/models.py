@@ -1,6 +1,8 @@
+import markdown
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
-from django.core.exceptions import ValidationError
+
 
 
 class ITGCLayer(models.Model):
@@ -177,3 +179,44 @@ class ITGCControl(models.Model):
 
     def __str__(self):
         return f"{self.control_id} – {self.itgc_category.name}"
+
+class ItgcNarrative(models.Model):
+    categories = models.ManyToManyField(
+        "ITGCCategory",
+        related_name="narratives",
+        help_text="Select all ITGC categories that belong to this domain "
+                   "(e.g. Access Management categories across Application, Database, OS, and Network layers).",
+    )
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True)
+    summary = models.TextField(blank=True)
+    disclaimer = models.TextField(
+        blank=True,
+        default="This narrative is a generic baseline. It is not specific to any company or SAP "
+                "implementation and should be tailored to your environment."
+    )
+    content = models.TextField(help_text="Markdown-formatted narrative content.")
+    content_html = models.TextField(blank=True, editable=False)
+    is_published = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["title"]
+        verbose_name = "ITGC Narrative"
+        verbose_name_plural = "ITGC Narratives"
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        self.content_html = markdown.markdown(
+            self.content or "",
+            extensions=["extra", "nl2br", "sane_lists"],
+        )
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("itgc:itgc_narrative", kwargs={"slug": self.slug})
+
+    def __str__(self):
+        return self.title

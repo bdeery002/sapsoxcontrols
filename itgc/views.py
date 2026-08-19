@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import ITGCControl, ITGCLayer, ITGCCategory
+from .models import ITGCControl, ITGCLayer, ITGCCategory, ItgcNarrative
 from mysite.constants import TEMPLATE_REGISTRY as T
 
 
@@ -38,8 +38,9 @@ def index(request):
         controls = controls.filter(risk__icontains=f_risk)
 
     context = {
-        "controls": controls,
-        "layers": ITGCLayer.objects.prefetch_related("categories").all(),
+    "controls": controls,
+    "layers": ITGCLayer.objects.prefetch_related("categories").all(),
+    "narratives": ItgcNarrative.objects.filter(is_published=True).order_by("title"),
     }
 
     if request.headers.get('HX-Request'):
@@ -79,3 +80,20 @@ def control_detail(request, control_id):
         "is_authenticated": request.user.is_authenticated,
     }
     return render(request, T["ITGC_CONTROL_DETAIL"]["path"], context)
+
+def itgc_narrative(request, slug):
+    try:
+        narrative = ItgcNarrative.objects.prefetch_related("categories__itgc_layer").get(
+            slug=slug, is_published=True
+        )
+    except ItgcNarrative.DoesNotExist:
+        return render(request, T["ITGC_NARRATIVE_NOT_FOUND"]["path"], {"slug": slug})
+
+    controls = ITGCControl.objects.select_related("itgc_category__itgc_layer").filter(
+        itgc_category__in=narrative.categories.all()
+    ).order_by("itgc_category__itgc_layer__name", "sequence_order")
+
+    return render(request, T["ITGC_NARRATIVE"]["path"], {
+        "narrative": narrative,
+        "controls": controls,
+    })

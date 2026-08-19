@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}ITGC Narrative Not Found{% endblock %}
+{% block content %}
+<div class="not-found">
+  <h1>ITGC Narrative Not Found</h1>
+  <p>The requested ITGC narrative (“{{ slug }}”) does not exist or is not published.</p>
+  <p><a href="{% url 'itgc:index' %}">← Back to ITGC dashboard</a></p>
+</div>
+{% endblock %}

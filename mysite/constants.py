@@ -38,6 +38,8 @@ TEMPLATE_REGISTRY = {
     "ITGC_WORKFLOW_NOT_FOUND": {"path": "itgc/partials/workflows/not_found.html", "role": "partial"},
     "ITGC_CONTROL_NOT_FOUND": {"path": "itgc/control_detail.html", "role": "page"},
     "ITGC_CONTROL_DETAIL": {"path": "itgc/control_detail.html"},
+    "ITGC_NARRATIVE": {"path": "itgc/itgc_narrative.html"},
+    "ITGC_NARRATIVE_NOT_FOUND": {"path": "itgc/itgc_narrative_not_found.html"},
 
 
     # Add these entries to your TEMPLATE_REGISTRY in mysite/constants.py
