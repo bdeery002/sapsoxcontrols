@@ -380,7 +380,31 @@ table.table th {
 }
 
 
+.narrative-layer-group {
+    margin-bottom: 1.25rem;
+}
 
+.narrative-layer-group h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.narrative-category-list {
+    list-style: disc;
+    margin-left: 1.25rem;
+    padding-left: 0;
+}
+
+.narrative-category-list li {
+    margin-bottom: 0.35rem;
+}
+
+.control-list-header {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
 
 tr:hover {
     background-color: #f1f3f5 !important;
