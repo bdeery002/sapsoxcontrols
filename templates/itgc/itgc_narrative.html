@@ -1,12 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}{{ narrative.title }}{% endblock %}
-{% block meta_description %}{{ narrative.summary|default:narrative.title|truncatechars:160 }}{% endblock %}
-{% block og_title %}{{ narrative.title }}{% endblock %}
-{% block og_description %}{{ narrative.summary|default:narrative.title|truncatechars:200 }}{% endblock %}
+{% block title %}SAP ITGC Narrative — {{ narrative.title }}{% endblock %}
+{% block meta_description %}SAP ITGC narrative for {{ narrative.title }}: {{ narrative.summary|default:narrative.title|truncatechars:160 }}{% endblock %}
+{% block og_title %}SAP ITGC Narrative — {{ narrative.title }}{% endblock %}
+{% block og_description %}SAP ITGC narrative for {{ narrative.title }}: {{ narrative.summary|default:narrative.title|truncatechars:200 }}{% endblock %}
 
 {% block content %}
 <div class="itgc-narrative">
+<p class="back-link">
+    <a href="{% url 'itgc:index' %}">← Back to ITGC dashboard</a>
+  </p>
+
   <p class="disclaimer">
     {{ narrative.disclaimer }}
   </p>
