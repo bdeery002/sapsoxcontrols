@@ -269,6 +269,24 @@ table.table th {
     text-decoration: underline;
 }
 
+.narrative-category-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.narrative-category-link:hover {
+    text-decoration: underline;
+}
+
+.narrative-category-link.disabled {
+    color: #6c757d;
+    font-weight: 400;
+    cursor: default;
+}
+
+
 .narrative-empty {
     margin: 0;
     color: #9ca3af;

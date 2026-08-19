@@ -13,19 +13,21 @@
   <p>Read the generic process narratives for each ITGC layer and category.</p>
 
   {% for layer, categories in layer_categories %}
-    <div class="narrative-layer">
+    <div class="narrative-layer-group">
       <h3>{{ layer.name }}</h3>
-      <div class="narrative-links">
+      <ul class="narrative-category-list">
         {% for category, narrative in categories %}
-          {% if narrative %}
-            <a href="{{ narrative.get_absolute_url }}" class="narrative-link">
-              {{ category.name }}
-            </a>
-          {% else %}
-            <span class="narrative-link disabled">{{ category.name }} (narrative pending)</span>
-          {% endif %}
+          <li>
+            {% if narrative %}
+              <a href="{{ narrative.get_absolute_url }}" class="narrative-category-link">
+                {{ category.name }}
+              </a>
+            {% else %}
+              <span class="narrative-category-link disabled">{{ category.name }} (narrative pending)</span>
+            {% endif %}
+          </li>
         {% endfor %}
-      </div>
+      </ul>
     </div>
   {% empty %}
     <p>No ITGC narratives have been published yet.</p>
