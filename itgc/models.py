@@ -1,4 +1,4 @@
-import markdown
+import markdown2
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
@@ -209,9 +209,9 @@ class ItgcNarrative(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
-        self.content_html = markdown.markdown(
+        self.content_html = markdown2.markdown(
             self.content or "",
-            extensions=["extra", "nl2br", "sane_lists"],
+            extras=["extra", "nl2br", "sane_lists"],
         )
         super().save(*args, **kwargs)
 
