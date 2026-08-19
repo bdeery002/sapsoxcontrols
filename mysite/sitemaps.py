@@ -2,7 +2,7 @@ from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
 from itgc.models import ITGCControl, ItgcNarrative
-from sox_controls.models import SoxControl
+from sox_controls.models import ProcessNarrative, SoxControl
 
 
 class StaticViewSitemap(Sitemap):
@@ -28,7 +28,21 @@ class SoxControlsSitemap(Sitemap):
         return SoxControl.objects.all()
 
     def location(self, obj):
-        return reverse("sox_controls:control_detail", kwargs={"control_id": obj.control_id})
+        return reverse(
+            "sox_controls:control_detail",
+            kwargs={"control_id": obj.control_id},
+        )
+
+
+class ProcessNarrativeSitemap(Sitemap):
+    changefreq = "yearly"
+    priority = 0.7
+
+    def items(self):
+        return ProcessNarrative.objects.filter(is_published=True)
+
+    def location(self, obj):
+        return obj.get_absolute_url()
 
 
 class ITGCSitemap(Sitemap):
@@ -39,7 +53,10 @@ class ITGCSitemap(Sitemap):
         return ITGCControl.objects.all()
 
     def location(self, obj):
-        return reverse("itgc:control_detail", kwargs={"control_id": obj.control_id})
+        return reverse(
+            "itgc:control_detail",
+            kwargs={"control_id": obj.control_id},
+        )
 
 
 class ITGCNarrativeSitemap(Sitemap):
@@ -50,4 +67,4 @@ class ITGCNarrativeSitemap(Sitemap):
         return ItgcNarrative.objects.filter(is_published=True)
 
     def location(self, obj):
-     return obj.get_absolute_url()
+        return obj.get_absolute_url()

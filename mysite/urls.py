@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django_ratelimit.decorators import ratelimit
 from django.contrib.sitemaps.views import sitemap
-from .sitemaps import StaticViewSitemap, SoxControlsSitemap, ITGCSitemap, ITGCNarrativeSitemap
+from .sitemaps import StaticViewSitemap, SoxControlsSitemap,ProcessNarrativeSitemap, ITGCSitemap, ITGCNarrativeSitemap
 from django.http import HttpResponse
 
 def indexnow_key(request):
@@ -27,6 +27,7 @@ def indexnow_key(request):
 sitemaps = {
     "static": StaticViewSitemap,
     "sox_controls": SoxControlsSitemap,
+    "process_narratives": ProcessNarrativeSitemap,
     "itgc": ITGCSitemap,
     "itgc_narratives": ITGCNarrativeSitemap,
 }
