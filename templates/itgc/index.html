@@ -10,22 +10,22 @@
 
 <section class="itgc-narratives">
   <h2>ITGC Narratives</h2>
-  <p>Read the generic process narratives that describe how ITGC controls fit together:</p>
+  <p>Read the generic process narratives for each ITGC layer and category.</p>
 
   {% for layer, categories in layer_categories %}
-    <div class="narrative-layer-group">
+    <div class="narrative-layer">
       <h3>{{ layer.name }}</h3>
-      <ul class="narrative-category-list">
+      <div class="narrative-links">
         {% for category, narrative in categories %}
           {% if narrative %}
-            <li>
-              <a href="{{ narrative.get_absolute_url }}" class="narrative-link">
-                {{ category.name }}
-              </a>
-            </li>
+            <a href="{{ narrative.get_absolute_url }}" class="narrative-link">
+              {{ category.name }}
+            </a>
+          {% else %}
+            <span class="narrative-link disabled">{{ category.name }} (narrative pending)</span>
           {% endif %}
         {% endfor %}
-      </ul>
+      </div>
     </div>
   {% empty %}
     <p>No ITGC narratives have been published yet.</p>
