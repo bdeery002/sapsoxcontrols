@@ -1,7 +1,7 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
-from itgc.models import ITGCControl
+from itgc.models import ITGCControl, ItgcNarrative
 from sox_controls.models import SoxControl
 
 
@@ -40,3 +40,14 @@ class ITGCSitemap(Sitemap):
 
     def location(self, obj):
         return reverse("itgc:control_detail", kwargs={"control_id": obj.control_id})
+
+
+class ITGCNarrativeSitemap(Sitemap):
+    changefreq = "yearly"
+    priority = 0.7
+
+    def items(self):
+        return ItgcNarrative.objects.filter(is_published=True)
+
+    def location(self, obj):
+        return obj.get_absolute_ur

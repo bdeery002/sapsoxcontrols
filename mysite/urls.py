@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django_ratelimit.decorators import ratelimit
 from django.contrib.sitemaps.views import sitemap
-from .sitemaps import StaticViewSitemap, SoxControlsSitemap, ITGCSitemap
+from .sitemaps import ITGCNarrativeSitemap, StaticViewSitemap, SoxControlsSitemap, ITGCSitemap,ITGCNarrativeSitemap
 from django.http import HttpResponse
 
 def indexnow_key(request):
@@ -28,6 +28,7 @@ sitemaps = {
     "static": StaticViewSitemap,
     "sox_controls": SoxControlsSitemap,
     "itgc": ITGCSitemap,
+    "itgc_narratives": ITGCNarrativeSitemap,
 }
 
 admin.site.login = ratelimit(key="ip", rate="5/m")(admin.site.login)
