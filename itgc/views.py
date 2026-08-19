@@ -19,10 +19,9 @@ def load_workflow(request, workflow_name):
         "secondary_nodes": secondary,
     })
 
-
 def index(request):
     """Main ITGC dashboard — handles full page loads and HTMX live-filtering."""
-    f_cat  = request.GET.get('filter_cat', '')
+    f_cat = request.GET.get('filter_cat', '')
     f_desc = request.GET.get('filter_desc', '')
     f_risk = request.GET.get('filter_risk', '')
 
@@ -37,10 +36,30 @@ def index(request):
     if f_risk:
         controls = controls.filter(risk__icontains=f_risk)
 
+    layers = ITGCLayer.objects.prefetch_related("categories").all()
+
+    # Map each category to its published narrative.
+    narrative_by_category = {}
+    for narrative in ItgcNarrative.objects.prefetch_related(
+        "categories"
+    ).filter(is_published=True):
+        for category in narrative.categories.all():
+            narrative_by_category.setdefault(category.pk, narrative)
+
+    # Build (layer, [(category, narrative), ...]) for the template.
+    layer_categories = []
+    for layer in layers:
+        categories = [
+            (category, narrative_by_category.get(category.pk))
+            for category in layer.categories.all()
+        ]
+        if any(narrative for _, narrative in categories):
+            layer_categories.append((layer, categories))
+
     context = {
-    "controls": controls,
-    "layers": ITGCLayer.objects.prefetch_related("categories").all(),
-    "narratives": ItgcNarrative.objects.filter(is_published=True).order_by("title"),
+        "controls": controls,
+        "layers": layers,
+        "layer_categories": layer_categories,
     }
 
     if request.headers.get('HX-Request'):

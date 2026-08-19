@@ -11,16 +11,28 @@
 <section class="itgc-narratives">
   <h2>ITGC Narratives</h2>
   <p>Read the generic process narratives that describe how ITGC controls fit together:</p>
-  <div class="narrative-links">
-    {% for narrative in narratives %}
-      <a href="{{ narrative.get_absolute_url }}" class="narrative-link">
-        {{ narrative.title }}
-      </a>
-    {% empty %}
-      <p>No ITGC narratives have been published yet.</p>
-    {% endfor %}
-  </div>
+
+  {% for layer, categories in layer_categories %}
+    <div class="narrative-layer-group">
+      <h3>{{ layer.name }}</h3>
+      <ul class="narrative-category-list">
+        {% for category, narrative in categories %}
+          {% if narrative %}
+            <li>
+              <a href="{{ narrative.get_absolute_url }}" class="narrative-link">
+                {{ category.name }}
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% empty %}
+    <p>No ITGC narratives have been published yet.</p>
+  {% endfor %}
 </section>
+
+<h2 class="control-list-header">Control List</h2>
 
 <!-- Filter Section -->
 <div style="background: #fcfcfc; padding: 15px; margin-bottom: 20px; border: 1px solid #000;">
