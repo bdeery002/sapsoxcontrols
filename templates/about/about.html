@@ -67,7 +67,8 @@
         <div class="cta-links">
             <a href="{% url 'sox_controls:index' %}" class="cta-link"> SAP Business Process Controls</a>
             <a href="{% url 'sox_controls:index' %}#narrative-section" class="cta-link">SAP Business Process Narratives</a>
-            <a href="{% url 'itgc:index' %}" class="cta-link">SAP IT General Controls (ITGC)</a>   
+            <a href="{% url 'itgc:index' %}" class="cta-link">SAP IT General Controls (ITGC)</a>
+            <a href="{% url 'itgc:index' %}#narrative-section" class="cta-link">SAP ITGC Narratives</a>   
         </div>
     </section>
 
@@ -88,7 +89,7 @@
 
 , with mapped SOX controls, process narratives, implementation guidance, and test procedures, as well as core ITGCs (access management, change control, computer operations) that apply across SAP environments. 
     
-<p>
+    <p>
     Each control ID, for example, <a href="{% url 'sox_controls:control_detail' 'P2P-01' %}" style="color: #007bff; text-decoration: underline;"> P2P-001 - Vendor Master Data -Dual Control</a> ,  links to a detail page with the control description, related risk, implementation guidance, and test procedures.
     </p>
 
@@ -97,6 +98,11 @@
     <a href="{% url 'sox_controls:process_narrative' 'procure-to-pay' %}" style="color: #007bff; text-decoration: underline;">
         Procure to Pay process narrative
     </a>.
+    ITGC narratives are similarly organized by layer and category, such as 
+    <a href="{% url 'itgc:index' %}#narrative-section" style="color: #007bff; text-decoration: underline;">
+        SAP Application Access to Programs and Data
+    </a>.
+
     </p>
         <p>
             These baselines are intended to be starting points, not final solutions. They are designed to help organizations assess their current state, design controls, plan testing, and maintain controls as their SAP environments evolve.
