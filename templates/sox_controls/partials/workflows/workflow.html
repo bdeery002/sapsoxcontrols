@@ -159,20 +159,15 @@
   })();
 </script>
 
-<div id="narrative-link-container" hx-swap-oob="true">
+<div id="narrative-content" hx-swap-oob="true">
     {% if process.narrative and process.narrative.is_published %}
-        <h3 style="margin-bottom: 5px; font-size: 1.1em;">Process Narrative</h3>
-        <p style="margin-bottom: 10px; color: #4b5563;">
-            {{ process.narrative.summary|truncatewords:25 }}
-        </p>
-        <a href="{{ process.narrative.get_absolute_url }}"
-           style="font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
-            📄 View full {{ process.name }} process narrative
+        <h3 class="narrative-title">{{ process.name }} Process Narrative</h3>
+        <p class="narrative-summary">{{ process.narrative.summary|truncatewords:30 }}</p>
+        <a href="{{ process.narrative.get_absolute_url }}" class="narrative-link">
+            View full {{ process.name }} narrative →
         </a>
     {% else %}
-        <p style="color: #9ca3af; font-style: italic; margin: 0;">
-            No process narrative available for {{ process.name }}.
-        </p>
+        <p class="narrative-empty">No process narrative available for {{ process.name }}.</p>
     {% endif %}
 </div>
 
