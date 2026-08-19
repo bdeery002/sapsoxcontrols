@@ -7,17 +7,6 @@
 
 {% block content %}
 
-<style>
-  /* Prevents text highlighting and copying *only* on the narrative content body */
-  .narrative-content {
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* IE / Edge */
-    user-select: none;         /* Standard syntax */
-  }
-</style>
-
-
 <div class="process-narrative">
   <a href="{% url 'sox_controls:index' %}?process={{ narrative.business_process.slug }}" class="back-link">
     ← Back to {{ narrative.business_process.name }} process flow.

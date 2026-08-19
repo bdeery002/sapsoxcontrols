@@ -192,7 +192,8 @@ table.table {
     background-color: #fff !important;
     border: 1px solid #000 !important;
     -webkit-user-select: none; /* Safari */
-    -ms-user-select: none;     /* IE 10 and older */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE / Edge */
     user-select: none;         /* Standard syntax */
 }
 
@@ -324,8 +325,13 @@ table.table th {
     line-height: 1.6;
 }
 
-.process-narrative .narrative-content {
+.process-narrative .narrative-content,
+.itgc-narrative .narrative-content {
     line-height: 1.6;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE / Edge */
+    user-select: none;         /* Standard syntax */
 }
 
 .process-narrative .narrative-content h2,
