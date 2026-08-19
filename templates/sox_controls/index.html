@@ -28,6 +28,18 @@
          style="position: relative; background: #fff; padding: 20px 20px 20px 0px; border: 1px solid #000; margin-bottom: 30px; border-top: none; min-height: 180px; overflow-x: auto; -webkit-overflow-scrolling: touch;">
 </section>
 
+<section id="narrative-section"
+         style="background: #fff; padding: 20px 20px 15px 20px; border: 1px solid #000; border-top: none; margin-bottom: 30px;">
+    <div id="narrative-content">
+        {% if processes.0.narrative and processes.0.narrative.is_published %}
+            <h3 class="narrative-title">{{ processes.0.name }} Process Narrative</h3>
+            <p class="narrative-summary">{{ processes.0.narrative.summary|truncatewords:30 }}</p>
+            <a href="{{ processes.0.narrative.get_absolute_url }}" class="narrative-link">
+                View full {{ processes.0.name }} narrative →
+            </a>
+        {% endif %}
+    </div>
+</section>
 
 <section>
     <div style="display: flex; justify-content: space-between; align-items: center;">

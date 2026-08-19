@@ -235,6 +235,50 @@ table.table th {
 .itgc-col-short { width: 20% !important; }
 .itgc-col-desc  { width: 32% !important; }
 
+/* Process Narrative Section */
+#narrative-section {
+    background: #fff;
+    border: 1px solid #000;
+    border-top: none;
+    padding: 20px 20px 15px 20px;
+    margin-bottom: 30px;
+}
+
+.narrative-title {
+    margin: 0 0 10px 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.narrative-summary {
+    margin: 0 0 15px 0;
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.narrative-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.narrative-link:hover {
+    text-decoration: underline;
+}
+
+.narrative-empty {
+    margin: 0;
+    color: #9ca3af;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
 
 
 tr:hover {
