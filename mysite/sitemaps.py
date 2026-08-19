@@ -50,4 +50,4 @@ class ITGCNarrativeSitemap(Sitemap):
         return ItgcNarrative.objects.filter(is_published=True)
 
     def location(self, obj):
-        return obj.get_absolute_ur
+    return obj.get_absolute_url()
