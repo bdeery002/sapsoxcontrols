@@ -199,7 +199,6 @@ table.table {
 table.table th, 
 table.table td {
     padding: 12px 15px !important;
-    /* Changed from right to left justify */
     text-align: left !important; 
     border: 1px solid #000 !important;
     vertical-align: top !important;
@@ -211,8 +210,6 @@ table.table th {
     font-weight: 600 !important;
     text-transform: uppercase !important;
     font-size: 0.85rem !important;
-    /* Ensure headers match the left justification */
-    text-align: left !important; 
 }
 
 /* Specific Column Widths for sox_controld */
@@ -338,7 +335,49 @@ table.table th {
     color: #111827;
 }
 
+/* Narrative page back link */
+.process-narrative .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+    color: #007bff;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
 
+.process-narrative .back-link:hover {
+    text-decoration: underline;
+}
+
+/* Narrative control list section */
+.narrative-controls {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #dee2e6;
+}
+
+.narrative-controls h2 {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    color: #111827;
+}
+
+.narrative-controls .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.narrative-controls .col-id a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.narrative-controls .col-id a:hover {
+    text-decoration: underline;
+}
 
 
 

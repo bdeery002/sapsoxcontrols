@@ -23,20 +23,23 @@ def load_workflow(request, workflow_name):
 
 def index(request):
     """Main dashboard — handles full page loads and HTMX live-filtering."""
-    f_sub  = request.GET.get('filter_sub', '')
+    f_sub = request.GET.get('filter_sub', '')
     f_short = request.GET.get('filter_short', '')
     f_desc = request.GET.get('filter_desc', '')
     f_risk = request.GET.get('filter_risk', '')
-    
-    # Order by business process name, then by sequence_order descending
+    process_slug = request.GET.get('process', '')
+
     controls = SoxControl.objects.select_related('sub_process__business_process').order_by(
         'sub_process__business_process__name', 'sequence_order'
     )
 
+    if process_slug:
+        controls = controls.filter(sub_process__business_process__slug=process_slug)
+
     if f_sub:
         controls = controls.filter(sub_process__name__icontains=f_sub)
     if f_short:
-            controls = controls.filter(short_description__icontains=f_short)
+        controls = controls.filter(short_description__icontains=f_short)
     if f_desc:
         controls = controls.filter(control_description__icontains=f_desc)
     if f_risk:
@@ -45,13 +48,13 @@ def index(request):
     context = {
         "controls": controls,
         "processes": BusinessProcess.objects.prefetch_related("sub_processes").all(),
+        "active_process": process_slug,
     }
 
     if request.headers.get('HX-Request'):
         return render(request, T["SOX_ROWS"]["path"], context)
 
     return render(request, T["SOX_INDEX"]["path"], context)
-
 
 def filter_by_process(request, process_slug):
     """Called by HTMX when a tab is clicked. Filters controls by BusinessProcess."""
@@ -90,7 +93,14 @@ def process_narrative(request, slug):
         ProcessNarrative, slug=slug, is_published=True
     )
     content_html = markdown2.markdown(narrative.content)
+    controls = SoxControl.objects.select_related(
+        'sub_process__business_process'
+    ).filter(
+        sub_process__business_process=narrative.business_process
+    ).order_by('sequence_order')
+
     return render(request, "sox_controls/process_narrative.html", {
         "narrative": narrative,
         "content_html": content_html,
+        "controls": controls,
     })

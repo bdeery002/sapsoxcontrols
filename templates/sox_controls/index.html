@@ -11,13 +11,14 @@
 
 <div class="tabs" style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0;">
     {% for process in processes %}
-    <button class="tab-btn {% if forloop.first %}active{% endif %}"
+    <button class="tab-btn {% if process.slug == active_process or not active_process and forloop.first %}active{% endif %}"
             hx-get="{% url 'sox_controls:load_workflow' process.slug %}"
             hx-target="#workflow-container"
             hx-on:click="updateActiveTab(this); filterByProcess('{{ process.slug }}')">
         {{ process.name }}
     </button>
     {% endfor %}
+
 </div>
 
 <section id="workflow-container" 
