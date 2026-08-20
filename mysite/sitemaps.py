@@ -11,7 +11,8 @@ class StaticViewSitemap(Sitemap):
 
     def items(self):
         return [
-            "about:about",
+            "about:about",         
+            "about:author_bio",    
             "sox_controls:index",
             "itgc:index",
         ]
