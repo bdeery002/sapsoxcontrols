@@ -1,146 +1,77 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}About — SAP SOX Control Baselines{% endblock %}
+{% block title %}SAP SOX Control Baselines & ITGC Frameworks{% endblock %}
+
+{% block meta_description %}Baseline SAP business process controls, SAP ITGCs, and SOX compliance frameworks for SAP-centric environments. Designed for internal audit leaders.{% endblock %}
 
 {% block content %}
 <div class="about-page">
-    <!-- Page Header -->
-    <h1>About - SAP SOX Control Baselines</h1>
-    <p>Baseline SAP-centric business process and IT control frameworks for building SOX programs.</p>
+    <!-- SEO-Optimized Page Header -->
+    <h1>SAP SOX Control Baselines & ITGC Frameworks</h1>
+    <p>Purpose-built SAP business process and IT control frameworks for designing, building, and scaling your SOX compliance programs.</p>
 
-    <!-- About the Author -->
-    <section class="author-section">
-        <h2>About the Author</h2>
-        <div class="author-grid">
-            <div class="author-bio">
-    <h3>Brendan Deery</h3>
-    <a href="https://www.linkedin.com/in/brendan-deery-b14a8128/" target="_blank" class="author-link">
-        LinkedIn Profile
-    </a>
-               
-
-                <p><strong>Senior Manager, IT Internal Audit</strong></p>
-                <p>
-                Internal Audit and SOX leader with 16+ years of Big 4 and industry experience. Deep expertise in SAP-centric environments, with added depth advising on controls for other major enterprise platforms.
-                </p> 
-                <p>
-                Brendan is a CA/CPA, CISA, CISSP, and AAISM. He has built SOX programs from the ground up, designed ITGCs and automated controls, and advised management on ERP security, change management, and financial (ICFR) and operational risk across integrated system landscapes.
-                </p>
-                <p>
-                These baselines reflect lessons learned from dozens of SAP-centric control design and testing engagements, acquisitions, and system implementations. They are purpose-built for organizations running SAP, helping you design and test SOX controls that fit your specific environment and risk profile.
-                </p>
-                <p>
-                Have questions, feedback, or want to discuss how these baselines might apply to your environment? I'm always keen to keep learning and trade perspectives with others working in this space. Feel free to reach out on <a href="https://www.linkedin.com/in/brendan-deery-b14a8128/" target="_blank">LinkedIn</a>.  
-                </p>
-               
-            </div>
-          
-            <div class="author-credentials">
-                <div class="cred-box">
-                    <h4>Certifications</h4>
-                    <ul>
-                        <li>CA/CPA - Chartered Accountant</li>
-                        <li>CISA - Certified Information Systems Auditor</li>
-                        <li>CISSP - Certified Information Systems Security Professional</li>
-                        <li>AAISM - Advanced in AI Security Management</li>
-                        <li>CIA - Certified Internal Auditor</li>
-                    </ul>
-                </div>
-
-                <div class="cred-box">
-                    <h4>Key Experience</h4>
-                    <ul>
-                        <li>SAP ecosystem: S/4HANA (on-prem & cloud), ECC, GRC, MDG, BW/BI, BPC</li>
-                        <li>SOX program design & execution</li>
-                        <li>ITGC & ITAC testing</li>
-                        <li>Control design & remediation</li>
-                        <li>Cybersecurity & technology risk reviews</li>
-                        <li>Data analytics supporting audit (Alteryx, SQL, Python)</li>
-                        <li>Big 4 & industry audit leadership</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-     <!-- Explore Resources -->
+    <!-- Explore Resources / CTAs pushed higher for quick user engagement -->
     <section class="cta-section">
-        <h2>Explore SOX Control Baselines</h2>
+        <h2>Explore Control Baselines</h2>
         <div class="cta-links">
-            <a href="{% url 'sox_controls:index' %}" class="cta-link"> SAP Business Process Controls</a>
+            <a href="{% url 'sox_controls:index' %}" class="cta-link">SAP Business Process Controls</a>
             <a href="{% url 'sox_controls:index' %}#narrative-section" class="cta-link">SAP Business Process Narratives</a>
             <a href="{% url 'itgc:index' %}" class="cta-link">SAP IT General Controls (ITGC)</a>
             <a href="{% url 'itgc:index' %}#narrative-section" class="cta-link">SAP ITGC Narratives</a>   
         </div>
     </section>
 
-    <!-- Mission Statement -->
+    <!-- Mission Statement & Core Value -->
     <section class="mission-section">
-        <h2>SOX Control Baselines for SAP Environments</h2>
+        <h2>About These Frameworks</h2>
         <p>
-            This site was built to share a practical baseline, a set of <a href="{% url 'sox_controls:index' %}" style="color: #007bff; text-decoration: underline;">SAP Business Process Controls (SOX)</a> and <a href="{% url 'itgc:index' %}" style="color: #007bff; text-decoration: underline;">SAP IT General Controls (ITGC)</a>
-            around which organizations can build and mature their SOX programs.
+            This site provides practical baselines—a core set of <a href="{% url 'sox_controls:index' %}" style="color: #007bff; text-decoration: underline;">SAP Business Process Controls (SOX)</a> and <a href="{% url 'itgc:index' %}" style="color: #007bff; text-decoration: underline;">SAP IT General Controls (ITGC)</a>—around which organizations can build and mature their SOX programs.
         </p>
         <p>
-            The resources here cover key SAP business processes - 
+            The resources here cover key SAP business processes— 
             {% for process in processes %}
-                <a href="{% url 'sox_controls:index' %}?process={{ process.slug }}" style="color: #007bff; text-decoration: underline;">{{ process.name }}</a>
+                <a href="{% url 'sox_controls:index' ?process={{ process.slug }}" style="color: #007bff; text-decoration: underline;">{{ process.name }}</a>
                 {% if forloop.revcounter == 2 %} and
                 {% elif not forloop.last %}, {% endif %}
             {% endfor %} 
-
-, with mapped SOX controls, process narratives, implementation guidance, and test procedures, as well as core ITGCs (access management, change control, computer operations) that apply across SAP environments. 
-    
-    <p>
-    Each control ID, for example, <a href="{% url 'sox_controls:control_detail' 'P2P-01' %}" style="color: #007bff; text-decoration: underline;"> P2P-001 - Vendor Master Data -Dual Control</a> ,  links to a detail page with the control description, related risk, implementation guidance, and test procedures.
-    </p>
-
-    <p>
-    Process narratives are also available for each process area, for example the 
-    <a href="{% url 'sox_controls:process_narrative' 'procure-to-pay' %}" style="color: #007bff; text-decoration: underline;">
-        Procure to Pay process narrative
-    </a>.
-    ITGC narratives are similarly organized by layer and category, such as 
-    <a href="{% url 'itgc:index' %}#narrative-section" style="color: #007bff; text-decoration: underline;">
-        SAP Application Access to Programs and Data
-    </a>.
-
-    </p>
+            —with mapped SOX controls, process narratives, implementation guidance, and test procedures, as well as core ITGC layers like access management and change control across SAP environments. 
+        </p>
         <p>
-            These baselines are intended to be starting points, not final solutions. They are designed to help organizations assess their current state, design controls, plan testing, and maintain controls as their SAP environments evolve.
+            Each control ID, for example, <a href="{% url 'sox_controls:control_detail' 'P2P-01' %}" style="color: #007bff; text-decoration: underline;">P2P-001 - Vendor Master Data - Dual Control</a>, links directly to a detail page featuring control descriptions, related risks, implementation guidance, and test procedures.
+        </p>
+        <p>
+            Process narratives are also available for each area, such as the <a href="{% url 'sox_controls:process_narrative' 'procure-to-pay' %}" style="color: #007bff; text-decoration: underline;">Procure to Pay process narrative</a>, alongside ITGC narratives organized by layer and category.
+        </p>
+        <p>
+            These baselines are intended to be starting points, not final solutions. They help organizations assess their current state, design custom controls, plan testing schedules, and scale their controls as their SAP environment evolves.
         </p>
     </section>
 
-    <!-- What's Included -->
+    <!-- What's Included Grid -->
     <section class="content-section">
         <h2>What's Included</h2>
         <div class="content-grid">
             <div class="content-item">
                 <h3><a href="{% url 'sox_controls:index' %}" style="color: #007bff; text-decoration: none;">SAP Business Process Controls</a></h3>
                 <p>
-                    Baseline control matrices for key SAP processes (Procure to Pay, Order to Cash, Record to Report, Acquire to Retire and Inventory). Each includes business
-                    risks, control objectives, and control designs mapped to SOX compliance requirements.
+                    Baseline control matrices for key SAP modules (Procure to Pay, Order to Cash, Record to Report, Acquire to Retire, and Inventory). Each includes business risks, control objectives, and designs mapped to compliance requirements.
                 </p>
             </div>
             <div class="content-item">
                 <h3><a href="{% url 'itgc:index' %}" style="color: #007bff; text-decoration: none;">IT General Controls (ITGCs)</a></h3>
                 <p>
-                    Core ITGC frameworks for SAP access management, change control,
-                    batch processing, and backup management.
+                    Core ITGC frameworks for SAP access management, change control, batch processing, and backup management across enterprise landscapes.
                 </p>
             </div>
             <div class="content-item">
-                <h3>Control Mapping & Matrices</h3>
+                <h3>Control Mapping & Workflows</h3>
                 <p>
-                    Interactive workflow dashboards showing SAP business process flows and how controls map to SOX requirements. 
-                    Click on any process node to filter and explore related controls, test procedures, and audit evidence. 
-                    Workflows visualize both primary processes and related controls in an intuitive, click-driven interface.
+                    Interactive workflow dashboards showing SAP business process flows and how controls map to compliance requirements. Click any process node to filter and explore related controls and audit evidence.
                 </p>
             </div>
         </div>
     </section>
-
 
     <!-- How to Use -->
     <section class="usage-section">
@@ -149,18 +80,15 @@
             These frameworks are <strong>starting points, not final solutions</strong>. Use them to:
         </p>
         <ul class="usage-list">
-            <li><strong>Assess current state:</strong> Compare your existing controls against the baseline to identify gaps.</li>
-            <li><strong>Design controls:</strong> Adapt control designs to your business processes, system configurations, and risk profile.</li>
-            <li><strong>Plan testing:</strong> Use the control matrices to scope and execute SOX testing programs.</li>
-            <li><strong>Maintain controls:</strong> Build on these frameworks as your SAP environment evolves and your organization matures.</li>
+            <li><strong>Assess current state:</strong> Compare your existing controls against the baseline to identify design gaps.</li>
+            <li><strong>Design controls:</strong> Adapt control parameters to your specific business processes, SAP configurations, and risk profiles.</li>
+            <li><strong>Plan testing:</strong> Use the built-in control matrices to scope and execute your SOX testing programs efficiently.</li>
+            <li><strong>Maintain controls:</strong> Build upon these frameworks as your SAP landscape changes and your compliance organization matures.</li>
         </ul>
     </section>
-
-   
 </div>
 
 <style>
-    /* About Page Styles - Minimal, Consistent with Site Design */
     .about-page {
         max-width: 900px;
     }
@@ -202,15 +130,10 @@
         margin-bottom: 1rem;
     }
 
-    /* Mission Section */
-    .mission-section {
-        margin-bottom: 3rem;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid #dee2e6;
-    }
-
-    /* Content Grid */
-    .content-section {
+    .mission-section,
+    .content-section,
+    .usage-section,
+    .cta-section {
         margin-bottom: 3rem;
         padding-bottom: 2rem;
         border-bottom: 1px solid #dee2e6;
@@ -239,13 +162,6 @@
         font-size: 0.9rem;
     }
 
-    /* Usage Section */
-    .usage-section {
-        margin-bottom: 3rem;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid #dee2e6;
-    }
-
     .usage-list {
         list-style: none;
         padding: 0;
@@ -261,72 +177,6 @@
 
     .usage-list strong {
         color: #007bff;
-    }
-
-    /* Author Section */
-    .author-section {
-        margin-bottom: 3rem;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid #dee2e6;
-    }
-
-    .author-grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 2rem;
-        margin-top: 1.5rem;
-    }
-
-    .author-bio h3 {
-        color: #007bff;
-        margin-bottom: 0.25rem;
-    }
-
-    .author-bio p {
-        margin-bottom: 1rem;
-    }
-
-    .author-bio p:first-of-type {
-        font-weight: 600;
-        color: #666;
-        font-size: 0.95rem;
-        margin-bottom: 1rem;
-    }
-
-    /* Credentials Boxes */
-    .author-credentials {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .cred-box {
-        padding: 1.5rem;
-        background-color: #f8f9fa;
-        border: 1px solid #dee2e6;
-    }
-
-    .cred-box h4 {
-        color: #007bff;
-        font-size: 1rem;
-        margin: 0 0 0.75rem 0;
-    }
-
-    .cred-box ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .cred-box li {
-        padding: 0.4rem 0;
-        font-size: 0.9rem;
-        color: #555;
-    }
-
-    /* CTA Section */
-    .cta-section {
-        margin-bottom: 2rem;
     }
 
     .cta-links {
@@ -352,24 +202,16 @@
         text-decoration: none;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
         .about-page h1 {
             font-size: 1.6rem;
         }
-
         .content-grid {
             grid-template-columns: 1fr;
         }
-
-        .author-grid {
-            grid-template-columns: 1fr;
-        }
-
         .cta-links {
             flex-direction: column;
         }
-
         .cta-link {
             width: 100%;
             text-align: center;

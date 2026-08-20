@@ -1,64 +1,131 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}About the Author — SAP SOX Control Baselines{% endblock %}
+{% block title %}About the Author | SAP SOX Frameworks{% endblock %}
 
 {% block content %}
 <div class="about-page">
-    <!-- Page Header -->
     <h1>About the Author</h1>
-    <p>Internal Audit and SOX leader specializing in SAP-centric control environments.</p>
+    <p>Experienced internal audit leader specializing in SAP controls, ITGCs, and automated SOX compliance frameworks.</p>
 
-    <!-- About the Author -->
     <section class="author-section">
         <div class="author-grid">
+            <!-- Main Bio Column -->
             <div class="author-bio">
                 <h3>Brendan Deery</h3>
-                <a href="https://www.linkedin.com/in/brendan-deery-b14a8128/" target="_blank" class="author-link">
-                    LinkedIn Profile
-                </a>
-
-                <p><strong>Senior Manager, IT Internal Audit</strong></p>
                 <p>
-                Internal Audit and SOX leader with 16+ years of Big 4 and industry experience. Deep expertise in SAP-centric environments, with added depth advising on controls for other major enterprise platforms.
-                </p> 
-                <p>
-                Brendan is a CA/CPA, CISA, CISSP, and AAISM. He has built SOX programs from the ground up, designed ITGCs and automated controls, and advised management on ERP security, change management, and financial (ICFR) and operational risk across integrated system landscapes.
+                    I am a Senior Manager in IT Internal Audit with extensive experience designing, testing, and scaling SOX compliance programs for complex, SAP-centric enterprise environments. 
                 </p>
                 <p>
-                These baselines reflect lessons learned from dozens of SAP-centric control design and testing engagements, acquisitions, and system implementations. They are purpose-built for organizations running SAP, helping you design and test SOX controls that fit your specific environment and risk profile.
+                    Over my career, I've focused on bridging the gap between technical SAP system configurations—such as automated business process controls and granular IT General Controls (ITGCs)—and practical, risk-based internal audit execution.
                 </p>
                 <p>
-                Have questions, feedback, or want to discuss how these baselines might apply to your environment? I'm always keen to keep learning and trade perspectives with others working in this space. Feel free to reach out on <a href="https://www.linkedin.com/in/brendan-deery-b14a8128/" target="_blank">LinkedIn</a>.  
+                    This platform was built to share the exact baseline frameworks, process narratives, and control matrices I use to streamline compliance, reduce manual audit friction, and establish repeatable control structures.
                 </p>
             </div>
-         
+
+            <!-- Credentials & Background Column -->
             <div class="author-credentials">
                 <div class="cred-box">
-                    <h4>Certifications</h4>
+                    <h4>Current Role</h4>
                     <ul>
-                        <li>CA/CPA - Chartered Accountant</li>
-                        <li>CISA - Certified Information Systems Auditor</li>
-                        <li>CISSP - Certified Information Systems Security Professional</li>
-                        <li>AAISM - Advanced in AI Security Management</li>
-                        <li>CIA - Certified Internal Auditor</li>
+                        <li>Senior Manager, IT Internal Audit</li>
+                        <li>Simpson Strong-Tie</li>
                     </ul>
                 </div>
-
                 <div class="cred-box">
-                    <h4>Key Experience</h4>
+                    <h4>Core Expertise</h4>
                     <ul>
-                        <li>SAP ecosystem: S/4HANA (on-prem & cloud), ECC, GRC, MDG, BW/BI, BPC</li>
-                        <li>SOX program design & execution</li>
-                        <li>ITGC & ITAC testing</li>
-                        <li>Control design & remediation</li>
-                        <li>Cybersecurity & technology risk reviews</li>
-                        <li>Data analytics supporting audit (Alteryx, SQL, Python)</li>
-                        <li>Big 4 & industry audit leadership</li>
+                        <li>SAP S/4HANA & ECC Controls</li>
+                        <li>IT General Controls (ITGC)</li>
+                        <li>Automated SOX Compliance</li>
+                        <li>Python / Django Tooling</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 </div>
+
+<!-- Embedded styles guarantee instant rendering without static file caching issues -->
+<style>
+    .about-page {
+        max-width: 900px;
+    }
+
+    .about-page h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #000;
+    }
+
+    .about-page > p {
+        color: #555;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .author-section {
+        margin-bottom: 3rem;
+    }
+
+    .author-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        margin-top: 1.5rem;
+    }
+
+    .author-bio h3 {
+        color: #007bff;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+    }
+
+    .author-bio p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #555;
+        margin-bottom: 1rem;
+    }
+
+    .author-credentials {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .cred-box {
+        padding: 1.5rem;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+    }
+
+    .cred-box h4 {
+        color: #007bff;
+        font-size: 1rem;
+        margin: 0 0 0.75rem 0;
+    }
+
+    .cred-box ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .cred-box li {
+        padding: 0.4rem 0;
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+    @media (max-width: 768px) {
+        .author-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
 {% endblock %}
