@@ -46,5 +46,6 @@ TEMPLATE_REGISTRY = {
 
     # ABOUT (Portfolio)
     "ABOUT_INDEX":    {"path": "about/about.html", "view": "about.about", "url": "/about/", "models": "None", "role": "page"},
+    "ABOUT_AUTHOR":     {"path": "about/author_bio.html", "view": "about.author_bio", "url": "/about/author/", "models": "None", "role": "page"},
 
 }

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}About the Author | Brendan Deery - SAP SOX & ITGC Frameworks{% endblock %}
+
+{% block meta_description %}Learn more about Brendan Deery, Senior Manager in IT Internal Audit and SAP controls expert specializing in automated controls, ITGCs, and SOX compliance.{% endblock %}
+
+{% block content %}
+<div class="process-narrative">
+    <a href="{% url 'about:about' %}" class="back-link">&larr; Back to Home</a>
+    
+    <h1>About the Author</h1>
+    <p class="lead">Brendan Deery is an IT audit and internal controls leader specializing in SAP-centric environments, automated business process controls, and IT general controls (ITGCs).</p>
+
+    <div class="narrative-content">
+        <h2>Professional Background</h2>
+        <p>As a Senior Manager in IT Internal Audit, Brendan brings deep expertise in designing, testing, and optimizing internal controls over financial reporting (ICFR) within complex ERP ecosystems—including SAP S/4HANA, ECC, and SAP GRC architectures.</p>
+        
+        <p>His work focuses on bridging the gap between technical system configurations and rigorous Sarbanes-Oxley (SOX) compliance frameworks, helping organizations build scalable, automated, and defensible control environments.</p>
+
+        <h2>Credentials & Core Competencies</h2>
+        <ul>
+            <li><strong>Professional Certifications:</strong> CA/CPA, CISA, CISSP</li>
+            <li><strong>Core Specializations:</strong> SAP Business Process Controls, SAP ITGCs, Segregation of Duties (SoD) risk analysis, GRC Access Controls, and Audit Data Analytics.</li>
+            <li><strong>Audit Methodology:</strong> PCAOB compliance standards, ICFR framework design, and automated control validation.</li>
+        </ul>
+
+        <h2>Connect</h2>
+        <p>You can connect with Brendan and view his professional background on <a href="https://www.linkedin.com/in/brendan-deery-b14a8128/" target="_blank" rel="noopener" class="narrative-link">LinkedIn</a>.</p>
+    </div>
+</div>
+{% endblock %}

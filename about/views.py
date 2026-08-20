@@ -9,3 +9,8 @@ def about(request):
     """Render the About page."""
     processes = BusinessProcess.objects.all()
     return render(request, T["ABOUT_INDEX"]["path"], {"processes": processes})
+
+@require_http_methods(["GET"])
+def author_bio(request):
+    """Render the separate About the Author credentials page."""
+    return render(request, T["ABOUT_AUTHOR"]["path"])
