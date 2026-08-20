@@ -1,31 +1,64 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}About the Author | Brendan Deery - SAP SOX & ITGC Frameworks{% endblock %}
-
-{% block meta_description %}Learn more about Brendan Deery, Senior Manager in IT Internal Audit and SAP controls expert specializing in automated controls, ITGCs, and SOX compliance.{% endblock %}
+{% block title %}About the Author — SAP SOX Control Baselines{% endblock %}
 
 {% block content %}
-<div class="process-narrative">
-    <a href="{% url 'about:about' %}" class="back-link">&larr; Back to Home</a>
-    
+<div class="about-page">
+    <!-- Page Header -->
     <h1>About the Author</h1>
-    <p class="lead">Brendan Deery is an IT audit and internal controls leader specializing in SAP-centric environments, automated business process controls, and IT general controls (ITGCs).</p>
+    <p>Internal Audit and SOX leader specializing in SAP-centric control environments.</p>
 
-    <div class="narrative-content">
-        <h2>Professional Background</h2>
-        <p>As a Senior Manager in IT Internal Audit, Brendan brings deep expertise in designing, testing, and optimizing internal controls over financial reporting (ICFR) within complex ERP ecosystems—including SAP S/4HANA, ECC, and SAP GRC architectures.</p>
-        
-        <p>His work focuses on bridging the gap between technical system configurations and rigorous Sarbanes-Oxley (SOX) compliance frameworks, helping organizations build scalable, automated, and defensible control environments.</p>
+    <!-- About the Author -->
+    <section class="author-section">
+        <div class="author-grid">
+            <div class="author-bio">
+                <h3>Brendan Deery</h3>
+                <a href="https://www.linkedin.com/in/brendan-deery-b14a8128/" target="_blank" class="author-link">
+                    LinkedIn Profile
+                </a>
 
-        <h2>Credentials & Core Competencies</h2>
-        <ul>
-            <li><strong>Professional Certifications:</strong> CA/CPA, CISA, CISSP</li>
-            <li><strong>Core Specializations:</strong> SAP Business Process Controls, SAP ITGCs, Segregation of Duties (SoD) risk analysis, GRC Access Controls, and Audit Data Analytics.</li>
-            <li><strong>Audit Methodology:</strong> PCAOB compliance standards, ICFR framework design, and automated control validation.</li>
-        </ul>
+                <p><strong>Senior Manager, IT Internal Audit</strong></p>
+                <p>
+                Internal Audit and SOX leader with 16+ years of Big 4 and industry experience. Deep expertise in SAP-centric environments, with added depth advising on controls for other major enterprise platforms.
+                </p> 
+                <p>
+                Brendan is a CA/CPA, CISA, CISSP, and AAISM. He has built SOX programs from the ground up, designed ITGCs and automated controls, and advised management on ERP security, change management, and financial (ICFR) and operational risk across integrated system landscapes.
+                </p>
+                <p>
+                These baselines reflect lessons learned from dozens of SAP-centric control design and testing engagements, acquisitions, and system implementations. They are purpose-built for organizations running SAP, helping you design and test SOX controls that fit your specific environment and risk profile.
+                </p>
+                <p>
+                Have questions, feedback, or want to discuss how these baselines might apply to your environment? I'm always keen to keep learning and trade perspectives with others working in this space. Feel free to reach out on <a href="https://www.linkedin.com/in/brendan-deery-b14a8128/" target="_blank">LinkedIn</a>.  
+                </p>
+            </div>
+         
+            <div class="author-credentials">
+                <div class="cred-box">
+                    <h4>Certifications</h4>
+                    <ul>
+                        <li>CA/CPA - Chartered Accountant</li>
+                        <li>CISA - Certified Information Systems Auditor</li>
+                        <li>CISSP - Certified Information Systems Security Professional</li>
+                        <li>AAISM - Advanced in AI Security Management</li>
+                        <li>CIA - Certified Internal Auditor</li>
+                    </ul>
+                </div>
 
-        <h2>Connect</h2>
-        <p>You can connect with Brendan and view his professional background on <a href="https://www.linkedin.com/in/brendan-deery-b14a8128/" target="_blank" rel="noopener" class="narrative-link">LinkedIn</a>.</p>
-    </div>
+                <div class="cred-box">
+                    <h4>Key Experience</h4>
+                    <ul>
+                        <li>SAP ecosystem: S/4HANA (on-prem & cloud), ECC, GRC, MDG, BW/BI, BPC</li>
+                        <li>SOX program design & execution</li>
+                        <li>ITGC & ITAC testing</li>
+                        <li>Control design & remediation</li>
+                        <li>Cybersecurity & technology risk reviews</li>
+                        <li>Data analytics supporting audit (Alteryx, SQL, Python)</li>
+                        <li>Big 4 & industry audit leadership</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 {% endblock %}
