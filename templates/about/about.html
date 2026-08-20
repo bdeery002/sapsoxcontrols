@@ -26,16 +26,16 @@
     <section class="mission-section">
         <h2>About These Frameworks</h2>
         <p>
-            This site provides practical baselines—a core set of <a href="{% url 'sox_controls:index' %}" style="color: #007bff; text-decoration: underline;">SAP Business Process Controls (SOX)</a> and <a href="{% url 'itgc:index' %}" style="color: #007bff; text-decoration: underline;">SAP IT General Controls (ITGC)</a>—around which organizations can build and mature their SOX programs.
+            This site provides practical baselines, a core set of <a href="{% url 'sox_controls:index' %}" style="color: #007bff; text-decoration: underline;">SAP Business Process Controls (SOX)</a> and <a href="{% url 'itgc:index' %}" style="color: #007bff; text-decoration: underline;">SAP IT General Controls (ITGC)</a>—around which organizations can build and mature their SOX programs.
         </p>
         <p>
-            The resources here cover key SAP business processes— 
+            The resources here cover key SAP business processes,  
             {% for process in processes %}
                 <a href="{% url 'sox_controls:index' ?process={{ process.slug }}" style="color: #007bff; text-decoration: underline;">{{ process.name }}</a>
                 {% if forloop.revcounter == 2 %} and
                 {% elif not forloop.last %}, {% endif %}
             {% endfor %} 
-            —with mapped SOX controls, process narratives, implementation guidance, and test procedures, as well as core ITGC layers like access management and change control across SAP environments. 
+            , with mapped SOX controls, process narratives, implementation guidance, and test procedures, as well as core ITGC layers like access management and change control across SAP environments. 
         </p>
         <p>
             Each control ID, for example, <a href="{% url 'sox_controls:control_detail' 'P2P-01' %}" style="color: #007bff; text-decoration: underline;">P2P-001 - Vendor Master Data - Dual Control</a>, links directly to a detail page featuring control descriptions, related risks, implementation guidance, and test procedures.
