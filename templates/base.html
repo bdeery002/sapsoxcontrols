@@ -67,7 +67,7 @@
                 <a href="{% url 'sox_controls:index' %}">SAP Business Process Controls (SOX) </a>
                 <a href="{% url 'itgc:index' %}">SAP IT General Controls (ITGC)</a>
                 {% if user.is_staff %}  <!-- Only show if logged in as staff -->
-                <a href="/admin/">Admin Panel</a>
+                <a href="/manage/">Admin Panel</a>
                 {% endif %}
 
                 
