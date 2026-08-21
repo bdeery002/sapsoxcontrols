@@ -37,7 +37,7 @@ admin.site.site_header = "SOX Dashboard"
 admin.site.site_title = "SOX Admin"
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("manage/", admin.site.urls),
     path("", include("about.urls")),
     path("blog/", include("blog.urls", namespace="blog")),
     path("sox_controls/", include("sox_controls.urls", namespace="sox_controls")),
